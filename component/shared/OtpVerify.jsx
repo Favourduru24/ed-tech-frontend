@@ -2,9 +2,6 @@
 import { useVerifyEmailMutation, useResendOtpMutation } from "@/features/user/usersApiSlice"
 import { useRef, useState, useEffect } from "react"
 import useAuth from "@/hooks/useAuth"
-import Link from "next/link"
-import Loader from "./Loader"
-import {ArrowLeft} from 'lucide-react'
 import {useRouter} from 'next/navigation'
 
 const OtpVerify = () => {
@@ -132,7 +129,6 @@ const OtpVerify = () => {
           <div className="flex flex-col items-center mb-8">
             <h1 className="text-3xl font-bold text-light-100 mb-1">Ed-Tech</h1>
             <p className="text-gray-400">Knowledge without boundaries</p>
-            {/* <Loader/> */}
           </div>
 
           {/* Verification Heading */}

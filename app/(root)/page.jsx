@@ -241,7 +241,7 @@ Chart.register(
   return (
     <section className="flex flex-col"> 
         <Header title="Dashboard"/>
-        <p className="text-[#FAFAFA] text-2xl font-medium leading-10 sm:pt-1 pt-5  selection:bg-[#B391F0]">Welcome, <span className="text-light-100">{username}</span></p>
+        <p className="text-[#FAFAFA] sm:text-2xl text-xl font-medium leading-10 sm:pt-1 pt-5  selection:bg-[#B391F0]">Welcome, <span className="text-light-100">{username}</span></p>
         <p className="text-light-100 font-sans selection:bg-[#B391F0] max-sm:text-sm">Here's is a brief summary of your progress and<br/> quizes and lesson taken.</p>
 
          <div className="w-full bg-[#1F2225] my-10 rounded-2xl flex items-cente p-8 justify-between max-lg:flex-col gap-20 ">
@@ -327,9 +327,9 @@ Chart.register(
                         }) : (
                                               <div className="w-full  rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center bg-[#1F2225]">
                                                   <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center">
-                                                     <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                                       <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                                            <Image src='/icons/notification.png' width={50} height={50} alt="notification/icon"/>
+                                                     <h2 className="sm:text-3xl text-xl text-white font-semibold font-mona-sans">No Lesson taken yet!</h2>
+                                                       <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-mona-sans sm:text-[1rem] text-sm">No worries plenty of lesson are available for you!</p>
+                                                            <Image src='/assets/icons/search.png' width={50} height={50} alt="search"/>
                                                   </div>
                                      </div> )}
                      
@@ -385,9 +385,9 @@ Chart.register(
                         }) : (
                                               <div className="w-full  rounded-2xl flex gap-2 items-center p-4 h-[27vh] flex items-center justify-center bg-[#1F2225]">
                                                   <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center">
-                                                     <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                                       <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                                            <Image src='/icons/notification.png' width={50} height={50} alt="notification/icon"/>
+                                                     <h2 className="sm:text-3xl text-white font-semibold font-mona-sans text-xl">No Quiz Taken Not Found!</h2>
+                                                       <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-mona-sans sm:text-[1rem] text-sm ">No worries, plenty of quiz are available for you!</p>
+                                                            <Image src='/assets/icons/search.png' width={50} height={50} alt="search/icon"/>
                                                   </div>
                                      </div> )}
                  </div>

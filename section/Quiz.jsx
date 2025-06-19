@@ -135,12 +135,12 @@ const Quiz = ({level, subject, query, page, urlParamName}) => {
                            </div>
                           : (
                                     <div className="w-full  rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center bg-[#1F2225]">
-                                       <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center">
-                                           <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                             <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                                 <Image src='/icons/notification.png' width={50} height={50} alt="notification/icon"/>
-                                       </div>
-                                    </div> )}
+                            <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center">
+                              <h2 className="sm:text-3xl text-xl text-[#B391F0] font-semibold font-mona-sans">Quiz Not Found!</h2>
+                                <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-mona-sans sm:text-[1rem] text-sm">No Quiz found for this search!</p>
+                              <Image src='/assets/icons/search.png' width={50} height={50} alt="notification/icon" className='rotate-90 size-32'/>
+                            </div>
+               </div> )}
                                        
             </section>
     </>

@@ -37,14 +37,14 @@ const Header = ({title}) => {
               
           
             <div className='flex gap-2 items-center rounded-full backdrop-blur-xl cursor-pointer relative hover:bg-[#1F2225] hover:rounded-full p-2'>
-              <Image src='/assets/icons/notify.png' width={24} height={24} alt='notification' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-4'/>
+              <Image src='/assets/icons/notify.png' width={24} height={24} alt='notification' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-5 max-sm:size-4'/>
                 <div className='bg-[#B391F0] h-5 w-5 items-center justify-center rounded-full absolute -top-1 -right-2 flex'>
                 <p className='text-[#FAFAFA] text-sm '>2</p>
                 </div>
           </div>
           <Link href='/training'>
               <div className='flex gap-2 items-center bg-[#9E4B9E] sm:px-4 py-1 sm:py-2 px-1 rounded-full cursor-pointer'>
-              <Image src='/assets/icons/new.png' width={20} height={20} alt='star' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-4'/>
+              <Image src='/assets/icons/new.png' width={20} height={20} alt='star' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-5'/>
                <p className='text-[#FAFAFA] text-sm font-semibold hidden sm:flex'>Create</p>
           </div>
               </Link>
@@ -52,7 +52,7 @@ const Header = ({title}) => {
             <div className='text-white hover:bg-[#1F2225] p-[0.5px] lg:hidden flex'>
                <Sheet>
   <SheetTrigger>
-     <Image src='/icons/menu.png' width={32} height={32} alt='menu' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-4'/>
+     <Image src='/assets/icons/menu.png' width={32} height={32} alt='menu' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-5'/>
   </SheetTrigger>
   <SheetContent className="focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none sm:w-64 bg-[#1F2225] w-72">
      <h3 className='text-light-100 py-1 pl-2 font-semibold text-2xl'>Ed- Tech</h3>

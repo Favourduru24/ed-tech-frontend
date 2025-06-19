@@ -6,7 +6,7 @@ import Session from "@/component/shared/Session";
 const RootLayout = ({children}) => {
      return (
          <Session>
-         <main className="flex min-h-screen w-full flex-col bg-[#060606] lg:flex-row">
+         <main className="flex min-h-screen w-full flex-col bg-[#060606] lg:flex-row selection:bg-[#B391F0]">
               <Sidebar/>
              <div className="flex-1 overflow-auto lg:mt-0 lg:max-h-screen">
                  <div className="w-full max-w-6xl mx-auto">

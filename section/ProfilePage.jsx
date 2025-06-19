@@ -15,6 +15,12 @@ import { sideLinks } from '@/constants'
 import { useState, useRef, useEffect} from 'react'
 import { imageCofig } from '@/app/api/axios'
 import Loader from '@/component/shared/Loader'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
      const ProfilePage = () => {
         const {id: user, username, email, profilePics} = useAuth()
@@ -144,7 +150,7 @@ import Loader from '@/component/shared/Loader'
                <Header title="Profile"/>
                  <div className=' w-full h-full rounded-t-2xl '>
                <div className='flex w-full h-full md:gap-5 max-md:gap-2'>
-                 <div className='xl:w-[30%] w-[15%] bg-[#1F2225] flex flex-col rounded-t-xl h-[90vh] relative sticky top-20'>
+                 <div className='xl:w-[30%] hidden bg-[#1F2225] xl:flex flex-col rounded-t-xl h-[90vh] relative sticky top-20'>
                   <nav className='h-full flex-col justify-between md:gap-4 p-2 rounded-t-xl hidden xl:flex'>
 
                                 <ul className=' w-full flex-col items-start gap-2'>
@@ -180,67 +186,83 @@ import Loader from '@/component/shared/Loader'
                                  </ul>
                              </nav>
 
-                  <nav className='h-full flex-col justify-between xl:hidden flex md:gap-4 p-2 rounded-t-xl '>
+                           </div>
+            <div className='xl:w-[60%] w-full h-full rounded-t-2xl flex flex-col overflow-hidden bg-[#1F2225] p-3 relative'>
 
-                                <ul className='w-full flex-col items-start gap-2 xl:flex'>
+                 <div className="xl:hidden flex absolute top-4 right-4 p-2 max-sm:top-1">
+                <Sheet>
+                  <SheetTrigger>
+                     <div className='bg-[#1F2225] p-2 rounded-full backdrop-blur-xl cursor-pointer hover:bg-black/70'>
+                                   <Image src='/assets/icons/dashboard.png' width={20} height={20} alt='star' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 size-5 max-sm:size-4'/>
+                      </div>
+                  </SheetTrigger>
+                  <SheetContent className="focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none w-72 bg-[#1F2225]">
+                      <nav className='flex h-full flex-col justify-between md:flex md:gap-4 bg-[#1F2225] p-2 rounded-md'>
+                
+                              <ul className=' w-full flex-col items-start gap-3'>
                                     {sideLinks?.slice(0, 4).map((link, index) => 
                                         (
-                                          <li  className={` w-full flex-col items-start gap-2 max-sm:gap-5 xl:flex group ${items.label === link.label ? 'bg-[#B391F0] rounded-lg font-bold text-[#1F2225] text-lg gap-5' : 'text-[#FAFAFA] items-center cursor-pointer font-sans font-semibold'} `} key={index} onClick={() => setItems(link)}>
-                                             <div className='p-16-semibold flex w-full gap-4 p-2 max-sm:p-0 items-center justify-center'>
-                                                 <Image src={link.icon} height={24} width={24} alt='logo' className="size-8 shrink-0"/>
+                                          <li  className={`w-full flex-col items-start gap-2 flex group ${items.label === link.label ? 'bg-[#B391F0] rounded-lg font-bold text-[#1F2225] text-lg' : 'text-[#FAFAFA] items-center cursor-pointer font-sans font-semibold'} `} key={index} onClick={() => setItems(link)}>
+                                             <div className='p-16-semibold flex w-full gap-4 p-4 items-center justify-between'>
+                                                 {link.label}
+                                                 <Image src="/assets/icons/arrow-right.png" height={24} width={24} alt='logo'/>
                                              </div> 
                                           </li>
                                         )
                                     )}
                                 </ul>
 
-                                     <ul className='flex justify-center items-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all flex-col'> 
+                                     <ul className='flex justify-center items-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all flex-col gap-3'> 
                                            {sideLinks?.slice(4).map((link, index) => 
                                         (
-                                          <li  className={` w-full flex-col items-start gap-2 xl:flex group ${items.label === link.label ? 'bg-[#B391F0] rounded-lg font-bold text-[#1F2225] font-sans text-lg' : 'text-[#FAFAFA] items-center cursor-pointer font-sans font-semibold'} `} key={index} onClick={() => setItems(link)}>
-                                             <div className='p-16-semibold flex w-full gap-4 p-2 max-sm:p-0 items-center justify-center'>
-                                                 <Image src={link.icon} height={24} width={24} alt='logo' className="size-8 shrink-0"/>
+                                          <li  className={`w-full flex-col items-start gap-2 xl:flex group ${items.label === link.label ? 'bg-[#B391F0] rounded-lg font-bold text-[#1F2225] font-sans text-lg' : 'text-[#FAFAFA] items-center cursor-pointer font-sans font-semibold'} `} key={index} onClick={() => setItems(link)}>
+                                             <div className='p-16-semibold flex w-full gap-4 p-4 items-center justify-between'>
+                                                 {link.label}
+                                                 <Image src="/assets/icons/arrow-right.png" height={24} width={24} alt='logo'/>
                                              </div> 
                                           </li>
                                         )
                                     )}
-                                          <li className=' w-full flex-col items-start gap-2 xl:flex group rounded-lg font-bold text-[#FAFAFA] items-center cursor-pointer'>
-                                             <button className='p-16-semibold flex w-full gap-4 p-2 max-sm:p-0 items-center justify-center cursor-pointer group' onClick={onLogout}>
-                                                {logoutLoading ? <Loader styleName='w-5 w-5' /> : <Image src="/icons/menu.png" height={24} width={24} alt='logo' className="size-8 shrink-0"/>}
-                                                <span className="absolute bottom-2 mb-1 hidden group-hover:flex px-2 py-1 text-xs text-white bg-gray-700 rounded-md shadow-md z-30 sm:left-20 left-12">logout</span>
+                                          <li className='w-full flex-col items-start gap-2 xl:flex group rounded-lg font-bold text-[#FAFAFA] items-center cursor-pointer'>
+                                             <button className='p-16-semibold flex w-full gap-4 p-4 max-sm:p-0 items-center cursor-pointer' onClick={onLogout}>
+                                                 <Image src="/assets/icons/book.png" height={24} width={24} alt='logo'/>
+                                                {logoutLoading ?<Loader styleName='w-4 w-4' title='logging out...' /> : 'Logout'}
                                              </button> 
                                           </li>
                                  </ul>
-                             </nav>
-            </div>
-            <div className='xl:w-[60%] w-[85%] h-full rounded-t-2xl flex flex-col overflow-hidden bg-[#1F2225] p-3'>
+                
+                           </nav>
+                  </SheetContent>
+                </Sheet> 
+                 </div>
+
                <div className='gap-2 flex flex-col'>
 
                    {items.label === 'My Tranings' 
                    ?
                     (
                    <div className='flex flex-col gap-2'>
-                   <p className='text-3xl font-thin text-light-100'>Tutors You have created</p>
-                   <p className='text-lg text-light-100 '>Thanks for sharing Ed-tech!</p> 
+                   <p className='sm:text-3xl font-thin text-light-100 text-xl'>Tutors You have created</p>
+                   <p className='sm:text-lg text-light-100 text-sm'>Thanks for sharing Ed-tech!</p> 
                    </div> 
                    ) 
                     : items.label === 'My Feeds' ?
                       (
                     <div className='flex flex-col gap-2'>
-                   <p className='text-3xl font-thin text-light-100'>Feed You have created</p>
-                   <p className='text-lg text-light-100 '>Thanks for sharing in Ed-tech!</p> 
+                   <p className='sm:text-3xl font-thin text-light-100 text-xl'>Feed You have created</p>
+                   <p className='sm:text-lg text-light-100 text-sm'>Thanks for sharing in Ed-tech!</p> 
                    </div>
                     ) : items.label === 'My Quizes' ? 
                       (
                     <div className='flex flex-col gap-2'>
-                   <p className='text-3xl font-thin text-light-100'>Quiz You have created</p>
-                   <p className='text-lg text-light-100 '>Thanks for sharing in Ed-tech!</p> 
+                   <p className='sm:text-3xl font-thin text-light-100 text-xl'>Quiz You have created</p>
+                   <p className='sm:text-lg text-light-100 text-sm'>Thanks for sharing in Ed-tech!</p> 
                    </div>
                     ) : items.label === 'My History' ? 
                       (
                     <div className='flex flex-col gap-2'>
-                   <p className='text-3xl font-thin text-light-100'>Quiz and Lesson Taken</p>
-                   <p className='text-lg text-light-100 '>Keep improving in Ed-tech!</p> 
+                   <p className='sm:text-3xl font-thin text-light-100 text-xl'>Quiz and Lesson Taken</p>
+                   <p className='sm:text-lg text-light-100 text-sm'>Keep improving in Ed-tech!</p> 
                    </div>
                     ) : ''
                   }
@@ -254,6 +276,7 @@ import Loader from '@/component/shared/Loader'
       : 'xl:gap-5 py-10'}`}>
                          
                   {items.label === 'My Tranings' ? (
+                     
                      <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] min-h-[71vh]">
                        {userTutorIds?.length > 0 ? userTutorIds.map((id) => {
                           const userTut = userTutorEntities[id]
@@ -286,7 +309,7 @@ import Loader from '@/component/shared/Loader'
                             </div>
                          )
                        }) : (
-                             <div className="w-[36rem] rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center bg-[#1F2225] border-2">
+                             <div className="w-[36rem] rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center bg-[#1F2225]">
                               <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center border-[1.9px] border-[#4B4D4F]">
                                  <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
                                    <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
@@ -294,10 +317,10 @@ import Loader from '@/component/shared/Loader'
                                </div>
                          </div> 
                         )}
-                       
                       </div>
+
                   ) : items.label === 'My Feeds' ?  
-                  <div className="min-h-[71vh]">   
+                  <div className="min-h-[79.6vh]">   
                        {ids?.length > 0 ? ids?.map((id) => {
                          const feedId = entities[id]
                          return (
@@ -364,8 +387,8 @@ import Loader from '@/component/shared/Loader'
                       : items.label === 'My History' 
                      ?            
                           (
-                          <div className="min-h-[71vh] w-full flex flex-col gap-10">
-                             <div className="w-full">
+                          <div className="min-h-[79.6vh] w-full flex flex-col gap-10 ">
+                             <div className="w-full py-5">
                               <h2 className="text-xl font-semibold mb-5 text-light-100">Quiz History</h2>
                                <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
                                {historyQuizIds?.length > 0 ? historyQuizIds.map((id) => {
@@ -465,7 +488,7 @@ import Loader from '@/component/shared/Loader'
                                                
                        
                       : (
-                      <div className='min-h-[78.7vh]'>
+                      <div className='min-h-[87.5vh]'>
                       <div className='flex flex-col gap-4 w-full h-full'>
                              <div className='  bg-black/10 w-32 h-32 rounded-full relative'>
                                   <Image src={profilePics.cloudinaryUrl}  width={1000} height={200} alt="image" className='object-contain border-[1.9px] border-[#4B4D4F] rounded-full w-full h-full'/>

@@ -168,19 +168,19 @@ import { formatDate } from '../libs/utils'
                   <div className='flex items-center mt-2 p-2 w-full justify-between'>
                     <div className='flex gap-2 items-center'>
                          <button onClick={handleLike}>
-                            {isLoading ? '..' : <Image src="/icons/like.png" height={24} width={24} alt='img' className="cursor-pointer sm:size-6 size-4"/>  }
+                            {isLoading ? '..' : <Image src="/assets/icons/like.png" height={24} width={24} alt='img' className="cursor-pointer sm:size-6 size-4"/>  }
                          </button>
                          <p className="font-zentry-regular font-semibold text-light-100 sm:text-[1rem] text-sm">{likeCount} </p>
 
                           <button >
-                            <Image src="/icons/comment.png" height={24} width={24} alt='img' className="cursor-pointer sm:size-6 size-4"/> 
+                            <Image src="/assets/icons/comment.png" height={24} width={24} alt='img' className="cursor-pointer sm:size-6 size-4"/> 
                          </button>
                          <p className="font-zentry-regular font-semibold text-light-100 sm:text-[1rem] text-sm">{feed?.commentCount} </p>
-                        <Image src="/icons/share.png" height={24} width={24} alt='img' onClick={handleShare} className="cursor-pointer sm:size-6 size-4"/>
+                        <Image src="/assets/icons/share.png" height={24} width={24} alt='img' onClick={handleShare} className="cursor-pointer sm:size-6 size-4"/>
                          
                         {pathname === '/profile' ? (
                           <div className='flex items-center justify-center rounded-full cursor-pointer   hover:rounded-full p-2 shrink-0 relative' >
-                          <Image src='/icons/more.png' width={20} height={20} alt='more' className='rotate-90' onClick={handleOpen} />
+                          <Image src='/assets/icons/more.png' width={20} height={20} alt='more' className='rotate-90' onClick={handleOpen} />
 
                           {open && <div className='absolute top-11 p-2 flex w-32 h-10 rounded-full flex justify-between items-center  bg-[#4B4D4F] rounded-full p-2'>
                           {Feature.map((items, index) => (

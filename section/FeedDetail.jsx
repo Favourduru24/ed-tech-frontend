@@ -158,7 +158,7 @@ const FeedDetail = ({id}) => {
                          <div className='flex items-center mt-10 gap-2 mb-5'>
                           <p className='font-semibold font-sans text-2xl text-white'>Related Feeds</p>
                            <div className='bg-[#B391F0] h-7 w-8 flex items-center justify-center rounded-sm font-semibold'>
-                            <Image src='/icons/ask.png' width={20} height={20} alt='more' className='rotate-90 size-5 cursor-pointer group' />
+                            <Image src='/assets/icons/ask.png' width={20} height={20} alt='more' className='rotate-90 size-5 cursor-pointer group' />
                            </div>
                      </div>
                 <div className="flex flex-col items-center w-full">
@@ -179,27 +179,3 @@ const FeedDetail = ({id}) => {
 }
 
 export default FeedDetail
-
-
-
-
-
-                                  //         {notify && notify.map((comment, index) => {
-                                  // return (
-                                  //   <div className='flex flex-col' key={index}>
-                                  //    <div className='flex gap-3 items-cente mt-5'>
-                                  //               <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                  //                <Image src="/images/user5.png" width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
-                                  //              </div>
-                                  //               <div className='flex flex-col '>
-                                  //               <div className='flex leading-0 gap-3 items-center'>
-                                  //                 <p className='text-lg font-semibold text-[#FAFAFA] font-sans relative'>Javascript Mastery<span className="bg-[#B391F0] h-2 w-2 rounded-full flex top-2 absolute -right-3"/></p>
-                                  //                <p className='text-md font-semibold text-[#B391F0] font-sans ml-2'>Posted on {comment.time} min ago</p>
-                                  //               </div>
-                                  //               <p className='mt-2 leading-6 text-[1rem] text-gray-300 font-sans max-w-3xl mb-2'>{comment.title} </p>
-                                  //                   <Like user={user} commentId={index} comment={comment}/>
-                                  //               </div>
-                                  //                </div>
-                                  //              </div>
-                                  //    )
-                                  //  })}

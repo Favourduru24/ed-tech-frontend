@@ -251,7 +251,7 @@ Chart.register(
                   <Button color='#B391F0' otherStyle='max-sm:w-full' title="Start Improving" links="/training"/>
             </div>
                  <div className="flex gap-5 max-xl:hidden">
-                 <Image src='/images/robot.png' alt="robotnic" width={280} height={280} />
+                 <Image src='/assets/images/robot.png' alt="robotnic" width={280} height={280} />
                  </div>
            </div>
           
@@ -301,7 +301,7 @@ Chart.register(
 
                            <div className='flex gap-4 items-start'>
                                              <div className='bg-black/10 w-16 h-16 rounded-full'>
-                                                      <Image src="/images/user2.jpg" width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                      <Image src={history?.userId.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                 </div>
                                                      <div className='flex flex-col leading-0 gap-2 mt-1'>
                                                        <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{history?.userId.username}</p>
@@ -309,7 +309,7 @@ Chart.register(
                                                      </div>
                                               </div>
 
-                          <Image src='/icons/book.png' width={24} height={24} alt="book" className="justify-end"/>
+                          <Image src='/assets/icons/book.png' width={24} height={24} alt="book" className="justify-end"/>
                          </div>
                          <div className="flex flex-col">
                           <h2 className="text-[#FAFAFA] mt-3 text-xl font-semibold leading-8 text-light-100">Learn {history.tutorId.subject}<br/>  With {history.tutorId.name}</h2>
@@ -359,7 +359,7 @@ Chart.register(
 
                            <div className='flex gap-4 items-start'>
                                              <div className='bg-black/10 w-16 h-16 rounded-full'>
-                                                      <Image src="/images/user2.jpg" width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                      <Image src={history.userId.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                 </div>
                                                      <div className='flex flex-col leading-0 gap-2 mt-1'>
                                                        <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{history.userId.username}</p>
@@ -367,7 +367,7 @@ Chart.register(
                                                      </div>
                                               </div>
 
-                          <Image src='/icons/book.png' width={24} height={24} alt="book" className="justify-end"/>
+                          <Image src='/assets/icons/book.png' width={24} height={24} alt="book" className="justify-end"/>
                          </div>
                          <div className="flex flex-col">
                           <h2 className="text-[#FAFAFA] mt-3 text-xl font-semibold leading-8 text-light-100">{history.quizId.subject} Quiz <br/> With {history.quizId.name}</h2>
@@ -399,11 +399,11 @@ Chart.register(
                <div className="mt-10 rounded-md text-white flex flex-col gap-5" >
                   <p className=" text-[min(10vw,40px)] selection:bg-[#B391F0] font-semibold text-[#B391F0]">Graph of your Lesson Taken.</p>
                  <div className="bg-[#1F2225] rounded-md xl:h-[35rem]">
-               {/* <Bar options={options} data={BarChartData} /> */}
+               <Bar options={options} data={BarChartData} />
                </div>
                 <p className=" text-[min(10vw,40px)] selection:bg-[#B391F0] font-semibold text-[#B391F0]">Graph of your Quizzes Taken.</p>
                <div className="bg-[#1F2225] rounded-md cursor-pointer xl:h-[35rem]">
-               {/* <Line options={options} data={LineChartData} /> */}
+               <Line options={options} data={LineChartData} />
                </div>
                </div>
                   

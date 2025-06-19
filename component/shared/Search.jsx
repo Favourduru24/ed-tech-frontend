@@ -38,7 +38,7 @@ const Search = () => {
       return (
     <form className='flex flex-grow'>
             <div className='flex gap-2 flex-grow  max-w-[450px] rounded-full p-2 bg-[#1F2225]' >
-           <Image src='/icons/ask.png' width={28} height={28} alt='search' className='object-cover cursor-pointer'/>
+           <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer'/>
          <input type="text"  placeholder='What U looking for'  onChange={(e) => setNotification(e.target.value)} className='text-light-100 flex-grow  p-1 rounded-full outline-none'/> 
          </div>
     </form>

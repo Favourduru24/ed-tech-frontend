@@ -185,7 +185,7 @@ const AuthForm = ({type}) => {
       {(loginIsError || isError) && (
         <div className='bg-red-900/20 p-3 rounded-lg flex items-start gap-3 border border-red-800/50'>
           <Image 
-            src="/icons/error.png" 
+            src="/assets/icons/error.png" 
             width={20} 
             height={20} 
             alt="error" 

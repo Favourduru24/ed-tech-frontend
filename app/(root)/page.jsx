@@ -309,11 +309,11 @@ Chart.register(
                                                      </div>
                                               </div>
 
-                          <Image src='/assets/icons/book.png' width={24} height={24} alt="book" className="justify-end"/>
+                          <Image src='/assets/icons/book.png' width={24} height={24} alt="book" className="justify-end cursor-pointer"/>
                          </div>
                          <div className="flex flex-col">
                           <h2 className="text-[#FAFAFA] mt-3 text-xl font-semibold leading-8 text-light-100">Learn {history.tutorId.subject}<br/>  With {history.tutorId.name}</h2>
-                           <p className="text-gray-300 max-w-md text-sm leading-6"><span className="text-[#B391F0] text-lg semibold">Topic: </span>{history.tutorId.topic}</p>
+                           <p className="text-lg font-sans text-light-100">Topic: <span className="text-[#B391F0] text-[1rem] text-base leading-6 lowercase">{history.tutorId.topic}</span></p>
                          </div>
                          <div className="w-full flex justify-between mt-5 items-end">
                          <Button title="Start" color='#B391F0' links={`/training/${history.tutorId._id}`} />
@@ -367,11 +367,11 @@ Chart.register(
                                                      </div>
                                               </div>
 
-                          <Image src='/assets/icons/book.png' width={24} height={24} alt="book" className="justify-end"/>
+                          <Image src='/assets/icons/book.png' width={24} height={24} alt="book" className="justify-end cursor-pointer"/>
                          </div>
                          <div className="flex flex-col">
                           <h2 className="text-[#FAFAFA] mt-3 text-xl font-semibold leading-8 text-light-100">{history.quizId.subject} Quiz <br/> With {history.quizId.name}</h2>
-                           <p className="text-gray-300 max-w-md text-sm leading-6"><span className="text-[#B391F0] text-lg semibold">Topic: </span>{history.quizId.topic}</p>
+                           <p className="text-light-100 text-lg leading-6 max-w-72">Topic: <span className="text-[#B391F0] text-[1rem] text-base leading-6 lowercase">{history.quizId.topic}</span></p>
                          </div>
                          <div className="w-full flex justify-between mt-5 items-end">
                          <Button title="Start" color='#B391F0' links={`/quiz/${history.quizId._id}`}/>
@@ -398,11 +398,11 @@ Chart.register(
              </div>
                <div className="mt-10 rounded-md text-white flex flex-col gap-5" >
                   <p className=" text-[min(10vw,40px)] selection:bg-[#B391F0] font-semibold text-[#B391F0]">Graph of your Lesson Taken.</p>
-                 <div className="bg-[#1F2225] rounded-md xl:h-[35rem]">
+                 <div className="bg-[#1F2225] rounded-md xl:h-[35rem] min-h-[10rem]">
                <Bar options={options} data={BarChartData} />
                </div>
                 <p className=" text-[min(10vw,40px)] selection:bg-[#B391F0] font-semibold text-[#B391F0]">Graph of your Quizzes Taken.</p>
-               <div className="bg-[#1F2225] rounded-md cursor-pointer xl:h-[35rem]">
+               <div className="bg-[#1F2225] rounded-md cursor-pointer xl:h-[35rem] min-h-[10rem]">
                <Line options={options} data={LineChartData} />
                </div>
                </div>

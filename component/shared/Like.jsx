@@ -4,11 +4,11 @@ import {useLikeCommentMutation, useDeleteCommentMutation} from '@/features/comme
 import {useState} from 'react'
 import Loader from './Loader'
 
-const Like = ({userId, comment, commentId}) => {
+const Like = ({userId, likes, commentId, user}) => {
 
      const [likeComment, {isLoading}] = useLikeCommentMutation()
      const [deleteComment, {isLoading: deleteLoading}] = useDeleteCommentMutation()
-     const [likeCount, setLikeCount] = useState(comment?.likes?.length || 0)
+     const [likeCount, setLikeCount] = useState(likes?.length || 0)
     
    const handleLike = async (e) => {
   e.preventDefault();
@@ -34,7 +34,7 @@ const Like = ({userId, comment, commentId}) => {
         </button>
          <p className="font-zentry-regular font-semibold text-light-100 text-sm ">{likeCount} {likeCount?.length > 1 ? 'Likes' : 'Like'}</p>
             <div className="group relative" >
-           {deleteLoading ? <Loader styleName="w-4 h-4"/> : <Image src='/assets/icons/more.png' width={20} height={20} alt='more' className='rotate-90 sm:size-4 size-3 cursor-pointer group' onClick={handleDeleteComment}/> }
+           {deleteLoading ? <Loader styleName="w-4 h-4"/> : userId === user?._id && <Image src='/assets/icons/more.png' width={20} height={20} alt='more' className='rotate-90 sm:size-4 size-3 cursor-pointer group' onClick={handleDeleteComment}/> }
              <span className="hidden top-7 absolute z-30 group-hover:flex text-sm text-white bg-gray-700 rounded-sm shadow-md z-30 font-sans p-1">delete</span>
              </div>
              

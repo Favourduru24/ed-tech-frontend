@@ -3,15 +3,20 @@ import { navLinks } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
 
 const Sidebar = () => {
     const pathname = usePathname()
 
   return (
-    <aside className='hidden h-screen w-72  p-4 shadow-md shadow-purple-200/50 lg:flex'>
-        <div className='flex size-full flex-col gap-4'>
-           <h3 className='text-white py-1 pl-2 font-semibold text-2xl'>Ed- Tech</h3>
+    <aside className='hidden h-screen w-72 p-2 shadow-md shadow-purple-200/50 lg:flex relative'>
+        <div className='flex size-full flex-col '>
+                     <div className="flex flex-col m-[5px]">
+                        <div className='w-full h-10 flex gap-2 items-end'>
+                        <Image src='/assets/images/ed-tech-logo3.png' alt='ed-tech-logo' width={200} height={200} className='object-cover brightness-100 size-10'/>
+                        <p className="font-semibold font-sans text-3xl text-light-100 ">Ed-Tech</p>
+                         </div>
+                           </div>
+
            <nav className='h-full flex-col justify-between md:flex md:gap-4 bg-[#1F2225] p-2 rounded-md'>
               <ul className='hidden w-full flex-col items-start gap-2 md:flex'>
                   {navLinks?.slice(0, 3).map((link) => {

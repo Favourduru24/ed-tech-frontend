@@ -1,3 +1,4 @@
+'use client'
 import { selectCurrentToken } from "@/features/auth/authSlice"
 import { useSelector } from "react-redux"
 import { useRouter } from "next/navigation"
@@ -10,7 +11,7 @@ const ProtectAuth = ({children}) => {
 
    useEffect(() => {
     if(token) {
-       router.push('/')
+       router.push('/verify-otp')
     }
    }, [token, router])
 

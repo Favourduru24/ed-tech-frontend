@@ -98,7 +98,7 @@ export const feedsApiSlice = apiSlice.injectEndpoints({
   }
 }),
           getUserFeed: builder.query({
-             query: (userId) => `/feeds/feed/user/${userId}`,
+          query: (userId) => `/feeds/feed/user/${userId}`,
              validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError
              },

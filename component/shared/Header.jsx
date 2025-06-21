@@ -42,7 +42,7 @@ const Header = ({title}) => {
                 <p className='text-[#FAFAFA] text-sm '>2</p>
                 </div>
           </div>
-          <Link href='/training'>
+          <Link href='/training/create'>
               <div className='flex gap-2 items-center bg-[#9E4B9E] sm:px-4 py-1 sm:py-2 px-1 rounded-full cursor-pointer'>
               <Image src='/assets/icons/new.png' width={20} height={20} alt='star' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-5'/>
                <p className='text-[#FAFAFA] text-sm font-semibold hidden sm:flex'>Create</p>

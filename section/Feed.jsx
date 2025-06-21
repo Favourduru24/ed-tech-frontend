@@ -11,7 +11,7 @@ import { formatDate } from '../libs/utils'
 
 
      const Feed = ({feed, id}) => {
-
+    
        const Feature = [
            {
               icons: '/icons/edit.svg',
@@ -103,47 +103,56 @@ import { formatDate } from '../libs/utils'
       <>
       
         {openModal && <div className='bg-black fixed inset-0 z-50 flex justify-center items-center' key={id}>
-             <div className="w-[45rem] h-[12rem] bg-[#1F2225] rounded-xl flex flex-col p-10 justify-center items-center">
-                 <form  className='flex flex-col gap-4 flex-grow max-w-[560px] h-full justify-center items-center'>
+             <div className="w-full max-w-2xl bg-dark-200 border-[1.0px] border-[#4B4D4F] sm:rounded-xl rounded-md flex flex-col p-10 justify-center items-center h-[10rem] p-5">
+                 <form  className='flex flex-col gap-4  max-w-[560px] h-full justify-center items-center'>
                       <div className='flex flex-col justify-center w-full items-center'>
                           <p className='font-bold text-4xl font-light leading-12'>Are you sure you want to delete.</p>
                           <p className='text-[#B391F0] text-xl'>This action can't be undone!</p>
                       </div>
                     <div className='flex gap-3 items-center'>
-                         <button className='w-24 h-10 bg-red-400 font-semibold rounded-lg cursor-pointer' type='submit' onClick={handleDelete}>{delLoading ? 'loading...' : 'Delete'}</button>
-                         <button className='w-24 h-10 bg-[#B391F0] font-semibold rounded-lg cursor-pointer' onClick={handleModal}>Cancel</button>
+                         <button className='text-sm text-white sm:text-[1rem] sm:w-20 h-8 w-16 sm:h-10 bg-destructive-100 font-semibold sm:rounded-lg rounded-sm cursor-pointer hover:bg-destructive-100/90 transition-colors' type='submit' onClick={handleDelete}>{delLoading ? 'loading...' : 'Delete'}</button>
+                         <button className='text-sm sm:text-[1rem] sm:w-20 h-8 sm:h-10 w-16  bg-[#B391F0] font-semibold sm:rounded-lg rounded-sm cursor-pointer hover:bg-[#B391F0]/90 transition-colors text-white font-sans' onClick={handleModal}>Cancel</button>
                     </div>
                  </form>
               </div> 
            </div>}
 
-            {share && <div className='bg-black fixed inset-0 z-50 flex justify-center items-center' >
-                        <div className="w-[45rem] h-[12rem] bg-[#1F2225] rounded-xl flex flex-col p-10 justify-center items-center">
-                            <form  className='flex flex-col gap-4 flex-gro h-full items-end'>
-           
-                                 <div className='flex flex-col justify-center w-full items-center'>
-                                       <div className='flex flex-col justify-center w-full items-center gap-2'>
-                                       <p className="text-[#B391F0] font-sans text-sm">Links to share this feed.</p>
-                                      <div className='w-[32rem] h-12 rounded-md bg-black/50 flex items-center justify-center'>
-                                        <p className="text-[#B391F0] font-sans text-sm">{`${window.location.origin}/feeds/${id}`}</p>
-                                      </div>
-                                    </div>
-                                 </div>
-           
-                               <div className='flex gap-3 '>
-                                    <button className='w-20 h-8 bg-[#B391F0] font-semibold rounded-lg cursor-pointer' onClick={handleCopyLink}>{copy ? 'Copied': 'Copy'}</button>
-                                    <button className='w-20 h-8 bg-destructive-100 font-semibold rounded-lg cursor-pointer'  onClick={handleShare}>Cancel</button>
-                               </div>
-                            </form>
-                         </div> 
-                      </div>}
+            {share && (
+              <div className='bg-black fixed inset-0 z-50 flex justify-center items-center p-4'>
+                  <div className="w-full max-w-2xl bg-dark-200 border-[1.0px] border-[#4B4D4F] sm:rounded-xl rounded-md flex flex-col justify-center items-center h-[10rem] p-5">
+                    <form className='flex flex-col gap-4 w-full'>
+                      <div className='flex flex-col justify-center w-full items-center'>
+                        <div className='flex flex-col justify-center w-full items-center gap-2'>
+                          <div className='w-full max-w-2xl h-12 rounded-md bg-black/50 flex items-center justify-center px-2 overflow-x-auto'>
+                            <p className="text-[#B391F0] font-sans text-sm truncate">{`${window.location.origin}/feeds/${id}`}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='flex gap-3 justify-end w-full'>
+                        <button 
+                          className='text-sm sm:text-[1rem] sm:w-20 h-8 sm:h-10 w-16  bg-[#B391F0] font-semibold sm:rounded-lg rounded-sm cursor-pointer hover:bg-[#B391F0]/90 transition-colors text-white font-sans'
+                          onClick={handleCopyLink}
+                        >
+                          {copy ? 'Copied' : 'Copy'} 
+                        </button>
+                        <button 
+                          className='text-sm text-white sm:text-[1rem] sm:w-20 h-8 w-16 sm:h-10 bg-destructive-100 font-semibold sm:rounded-lg rounded-sm cursor-pointer hover:bg-destructive-100/90 transition-colors'
+                          onClick={handleShare}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                    )}
 
              <section className='flex flex-col py-3 w-full gap-2' >
                  <div className='rounded-2xl relative bg-dark-200 border-[1.0px] border-[#4B4D4F] flex flex-col p-4' >
                  <div className='flex sm:justify-between items-center mb-2 gap-3 justify-between max-sm:justify-envenly'>
                      <div className='flex sm:gap-2 items-center gap-1 '>
                        <div className='  bg-black/10 sm:w-16 sm:h-16 w-10 h-10 shrink-0 whitespace-nowrap rounded-full'>
-                  <Image src={feed?.userId?.profilePics?.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                  <Image src={feed?.userId?.profilePics?.cloudinaryUrl ? feed?.userId?.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                           </div>
                      <p className='text-lg text-white font-semibold sm:text-[1rem] text-sm whitespace-nowrap'>{feed.userId.username}</p>
                      </div>

@@ -54,8 +54,6 @@ import {
          
          const {tutorCount: historyTutorCount} = userTutorHistory?.tutorStats || {}
 
-          // const {tutorCount} = historyTutorIds
-         
          const {data: userQuizHistory} = useGetQuizHistoryQuery(user)
         
         const {ids: historyQuizIds, entities: historyQuizsEntities} = userQuizHistory?.quizes || {}
@@ -92,6 +90,7 @@ import {
               setImageUrl(false)
                
               }
+              //feedCount
 
         const handleEditProfile = async (e) => {
      e.preventDefault();
@@ -115,8 +114,9 @@ import {
     console.error('Profile update failed:', error);
   }
 }
+//isFeedLoading ||
 
-     if(isFeedLoading || isTutorLoading || isQuizLoading) {
+     if( isTutorLoading || isQuizLoading) {
        return (
           <div className="fixed inset-0 z-50 flex justify-center items-cente bg-black">
                              <Loader styleName='w-14 h-14'/>
@@ -124,7 +124,7 @@ import {
        )
      }   
 
-    console.log({userQuizTutorEntities})
+     
 
          return (
           <>
@@ -146,6 +146,7 @@ import {
                          </div> 
                       </div>
              }
+
             <section className='w-full flex flex-col'>
                <Header title="Profile"/>
                  <div className=' w-full h-full rounded-t-2xl '>
@@ -179,7 +180,7 @@ import {
                                     )}
                                           <li className='hidden w-full flex-col items-start gap-2 xl:flex group rounded-lg font-bold text-[#FAFAFA] items-center cursor-pointer'>
                                              <button className='p-16-semibold flex w-full gap-4 p-4 max-sm:p-0 items-center cursor-pointer' onClick={onLogout}>
-                                                 <Image src="/assets/icons/book.png" height={24} width={24} alt='logo'/>
+                                                 <Image src="/assets/icons/logout.png" height={24} width={24} alt='logo'/>
                                                 {logoutLoading ?<Loader styleName='w-4 w-4' title='logging out...' /> : 'Logout'}
                                              </button> 
                                           </li>
@@ -225,7 +226,7 @@ import {
                                     )}
                                           <li className='w-full flex-col items-start gap-2 xl:flex group rounded-lg font-bold text-[#FAFAFA] items-center cursor-pointer'>
                                              <button className='p-16-semibold flex w-full gap-4 p-4 max-sm:p-0 items-center cursor-pointer' onClick={onLogout}>
-                                                 <Image src="/assets/icons/book.png" height={24} width={24} alt='logo'/>
+                                                 <Image src="/assets/icons/logout.png" height={24} width={24} alt='logo'/>
                                                 {logoutLoading ?<Loader styleName='w-4 w-4' title='logging out...' /> : 'Logout'}
                                              </button> 
                                           </li>
@@ -275,51 +276,72 @@ import {
       ? ''  
       : 'xl:gap-5 py-10'}`}>
                          
-                  {items.label === 'My Tranings' ? (
+                  {items.label === 'My Tranings' ? 
+                  (
                      
                      <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] min-h-[71vh]">
                        {userTutorIds?.length > 0 ? userTutorIds.map((id) => {
                           const userTut = userTutorEntities[id]
+
+                           const {_id, userId, subject, name, topic, duration } = userTut
+
                                   return (
-                            <div className=' bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center relative' key={userTut?._id}>
+                            <div className=' bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center relative' key={_id}>
                                            <div className='flex gap-3 items-start'>
                                              <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                      <Image src={userTut?.userId?.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                      <Image src={userId?.profilePics.cloudinaryUrl ? userId?.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                 </div>
                                                      <div className='flex flex-col leading-0 gap-2 mt-1'>
-                                                       <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userTut?.userId?.username}</p>
+                                                       <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId?.username}</p>
                                                       <p className='text-[0.8rem] font-semibold text-[#B391F0] font-sans'>pro</p>
                                                      </div>
                                               </div>
                                                 <div className='flex flex-col pt-4 pb-2'>
-                                                 <p className='text-xl font-semibold leading-8 text-light-100'>Learn {userTut?.subject}<br/>  With {userTut.name}  </p>
-                                                 <p className='text-gray-300 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] semibold text-base leading-6 lowercase max-w-72'>{userTut.topic}.</span></p>
+                                                 <p className='text-xl font-semibold leading-8 text-light-100'>Learn {subject}<br/>  With {name}  </p>
+                                                 <p className='text-light-100 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] semibold text-base leading-6 lowercase max-w-72'>{topic}.</span></p>
                                                 </div>
                                                 <div className="flex items-center justify-between my-1">
-                                                       <Link href={`/training/${userTut._id}`}>
+                                                       <Link href={`/training/${_id}`}>
                                                           <div className="w-30 h-10 flex items-center justify-center font-semibold rounded-full bg-[#9E4B9E] backdrop-blur-xl cursor-pointer">
                                                            <p className="text-[#FAFAFA]">Start</p>
                                                           </div>
                                                        </Link>
                                                          <div className="w-20 h-8 flex items-center justify-center font-semibold rounded-full bg-[#696060]  ">
-                                                           <p className="text-[#FAFAFA]">{userTut.duration}min</p>
+                                                           <p className="text-[#FAFAFA]">{duration}min</p>
                                                           </div>
                                                  </div>
                                                  
                             </div>
                          )
                        }) : (
-                             <div className="w-[36rem] rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center bg-[#1F2225]">
-                              <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center border-[1.9px] border-[#4B4D4F]">
-                                 <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                   <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                      <Image src='/assets/icons/search.png' width={50} height={50} alt="search/icon"/>
-                               </div>
-                         </div> 
-                        )}
+                            <div className="col-span-full flex justify-center items-center p-4">
+      <div className="w-full max-w-4xl rounded-2xl flex flex-col items-center justify-center p-8 bg-[#1F2225] border-[1.9px] border-[#4B4D4F]">
+        <div className="mb-4 text-[#B391F0]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B391F0] text-center mb-4 font-mona-sans">
+          You Haven't Made Any Lesons Yet
+        </h2>
+        <p className="text-light-100 text-sm sm:text-base md:text-lg text-center max-w-2xl mb-6 font-mona-sans leading-relaxed">
+           No lessons created yet - but that's easy to change! Click the button below to create your first lesson in just a few minutes.
+        </p>
+           <Link href="/training/create">
+           <button className="px-6 py-3 bg-[#9E4B9E] hover:bg-[#8A3A8A] rounded-full text-[#FAFAFA] font-semibold transition-colors duration-200 cursor-pointer">
+          Create Your First Lesson
+        </button>
+           </Link>
+        
+      </div>
+    </div> 
+                        )
+                        
+                        }
                       </div>
 
-                  ) : items.label === 'My Feeds' ?  
+                  ) 
+                  : items.label === 'My Feeds' ?  
                   <div className="min-h-[79.6vh]">   
                        {ids?.length > 0 ? ids?.map((id) => {
                          const feedId = entities[id]
@@ -327,97 +349,130 @@ import {
                           <Feed feed={feedId} id={id} key={feedId.id}/>
                          )
                        }) : (
-                          <div className="w-full rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center">
-                              <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center border-[1.9px] border-[#4B4D4F]">
-                                 <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                   <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                      <Image src='/assets/icons/search.png' width={50} height={50} alt="search/icon"/>
-                               </div>
-                        </div> )} 
+  <div className="w-full max-w-[58rem] flex gap-2 items-center p-4 justify-center h-[46rem]">
+   <div className="w-full rounded-2xl flex flex-col items-center justify-center p-8 bg-[#1F2225] border-[1.9px] border-[#4B4D4F]">
+        <div className="mb-4 text-[#B391F0]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B391F0] text-center mb-4 font-mona-sans">
+          You Haven't Created Any Feed Yet
+        </h2>
+        <p className="text-light-100 text-sm sm:text-base md:text-lg text-center max-w-2xl mb-6 font-mona-sans leading-relaxed">
+           No Feed created yet - but that's easy to change! Click the button below to create your first Feed in just a few minutes.
+        </p>
+           <Link href="/feeds/create">
+           <button className="px-6 py-3 bg-[#9E4B9E] hover:bg-[#8A3A8A] rounded-full text-[#FAFAFA] font-semibold transition-colors duration-200 cursor-pointer">
+          Create Your First Feed
+        </button>
+           </Link>
+        
+      </div>
+  </div>
+)} 
 
                      </div> 
                      :  items.label === 'My Quizes' 
                      ?            
                          (
-                         <div className="min-h-[71vh] grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
-                           {userQuizTutorIds?.length > 0 ? userQuizTutorIds.map((id) => {
+                          <div className="min-h-[71vh] grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+                            {userQuizTutorIds?.length > 0 ? userQuizTutorIds.map((id) => {
 
                                           const quiz = userQuizTutorEntities[id]
+
+                                           const {_id, userId, subject, name, topic, duration } = quiz
                                                           
                                           return (
-                                               <div className='bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center' key={quiz?._id}>
+                                               <div className='bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center' key={_id}>
                                                 <div className='flex gap-3 items-start'>
                                                  <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                   <Image src={quiz.userId.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/> 
+                                                   <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png' } width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/> 
                                                                      </div>
                                                    <div className='flex flex-col leading-0 gap-2 mt-1'>
-                                                  <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{quiz.userId.username}</p>
+                                                  <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>
                                                   <p className='text-[0.8rem] font-semibold text-[#B391F0] font-sans'>pro</p>
                                                   </div>
                                                         </div>
                                                     <div className='flex flex-col pt-4 pb-2'>
-                                                    <p className='text-xl font-semibold leading-8 text-light-100'>{quiz.subject} Quiz<br/>  With {quiz.name}  </p>
-                                              <p className='text-gray-300 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] semibold text-base leading-6 lowercase max-w-72'>{quiz.topic}.</span></p>
+                                                    <p className='text-xl font-semibold leading-8 text-light-100'>{subject} Quiz<br/>  With {name}  </p>
+                                              <p className='text-light-100 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] semibold text-base leading-6 lowercase max-w-72'>{topic}.</span></p>
                                                                      </div>
                                               <div className="flex items-center justify-between my-1">
-                                              <Link href={`/quiz/${quiz._id}`}>
+                                              <Link href={`/quiz/${_id}`}>
                                               <div className="w-30 h-10 flex items-center justify-center font-semibold rounded-full bg-[#9E4B9E] backdrop-blur-xl cursor-pointer">
                                                <p className="text-[#FAFAFA]">Start</p>
                                                                   </div>
                                                             </Link>
                                             <div className="w-20 h-8 flex items-center justify-center font-semibold rounded-full bg-[#696060]  ">
-                                                            <p className="text-[#FAFAFA]">{quiz.duration}min</p>
+                                                            <p className="text-[#FAFAFA]">{duration}min</p>
                                                             </div>
                                                                       </div>
                                                                       
                                                  </div>
                                                                  )
                                                 }) : (
-                          <div className="lg:w-[38rem] w-full rounded-2xl flex gap-2 items-center p-4 h-[60vh] flex items-center justify-center bg-[#1F2225]">
-                              <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center border-[1.9px] border-[#4B4D4F]">
-                                 <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                   <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                      <Image src='/assets/icons/search.png' width={50} height={50} alt="search/icon"/>
-                               </div>
-                        </div> )}
+    <div className="col-span-full flex justify-center items-center p-4">
+      <div className="w-full max-w-4xl rounded-2xl flex flex-col items-center justify-center p-8 bg-[#1F2225] border-[1.9px] border-[#4B4D4F]">
+        <div className="mb-4 text-[#B391F0]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B391F0] text-center mb-4 font-mona-sans">
+          You Haven't Made Any Quizzes Yet
+        </h2>
+        <p className="text-light-100 text-sm sm:text-base md:text-lg text-center max-w-2xl mb-6 font-mona-sans leading-relaxed">
+           No quizzes created yet - but that's easy to change! Click the button below to create your first quiz in just a few minutes.
+        </p>
+           <Link href="/quiz/create">
+           <button className="px-6 py-3 bg-[#9E4B9E] hover:bg-[#8A3A8A] rounded-full text-[#FAFAFA] font-semibold transition-colors duration-200 cursor-pointer">
+          Create Your First Quiz
+        </button>
+           </Link>
+        
+      </div>
+    </div> 
+  )}
                                                 </div> 
                                                )
                                                
-                       
                       : items.label === 'My History' 
                      ?            
                           (
-                          <div className="min-h-[79.6vh] w-full flex flex-col gap-10 ">
+                          <div className="min-h-[95vh] w-full flex flex-col gap-10 ">
                              <div className="w-full py-5">
                               <h2 className="text-xl font-semibold mb-5 text-light-100">Quiz History</h2>
                                <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
                                {historyQuizIds?.length > 0 ? historyQuizIds.map((id) => {
 
                                           const quiz = historyQuizsEntities[id]
-                                               console.log({quiz})           
+
+                                                const {_id, userId, quizId} = quiz 
+
                                           return (
-                                               <div className=' bg-[#1F2225]  rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center h-[18rem]' key={quiz?._id}>
+                                               <div className=' bg-[#1F2225]  rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center h-[18rem]' key={_id}>
                                                 <div className='flex gap-3 items-start'>
                                                  <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                  <Image src={quiz.userId.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                  <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                                      </div>
                                                    <div className='flex flex-col leading-0 gap-2 mt-1'>
-                                                  <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{quiz.userId.username}</p>
+                                                  <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>
                                                   <p className='text-[0.8rem] font-semibold text-[#B391F0] font-sans'>pro</p>
                                                   </div>
                                                         </div>
                                                     <div className='flex flex-col pt-4 pb-2'>
-                                                    <p className='text-xl font-semibold leading-8 text-light-100'>Learn {quiz?.quizId?.subject} <br/>  With {quiz?.quizId?.name}  </p>
-                                              <p className='text-gray-300 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] font semibold text-base leading-6 lowercase'>{quiz?.quizId?.topic}.</span></p>
+                                                    <p className='text-xl font-semibold leading-8 text-light-100'>Learn {quizId?.subject} <br/>  With {quizId?.name}  </p>
+                                              <p className='text-light-100 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] font semibold text-base leading-6 lowercase'>{quizId?.topic}.</span></p>
                                                                      </div>
                                               <div className="flex items-center justify-between my-1">
-                                              <Link href={`/quiz/${quiz?.quizId?._id}`}>
+                                              <Link href={`/quiz/${quizId?._id}`}>
                                               <div className="w-30 h-10 flex items-center justify-center font-semibold rounded-full bg-[#9E4B9E] backdrop-blur-xl cursor-pointer">
                                                <p className="text-[#FAFAFA]">Start</p>
                                                                   </div>
                                                             </Link>
                                             <div className="w-20 h-8 flex items-center justify-center font-semibold rounded-full bg-[#696060]  ">
-                                                            <p className="text-[#FAFAFA]">{quiz?.quizId?.duration}min</p>
+                                                            <p className="text-[#FAFAFA]">{quizId?.duration}min</p>
                                                             </div>
                                                                       </div>
                                                                       
@@ -425,13 +480,28 @@ import {
                                                                  )
                                                 }) 
                         : (
-                          <div className="lg:w-[38rem] border-[1.9px] border-[#4B4D4F] w-full rounded-2xl flex gap-2 items-center p-4 flex justify-center bg-[#1F2225]">
-                              <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center">
-                                 <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                   <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                      <Image src='/assets/icons/search.png' width={50} height={50} alt="search/icon"/>
-                               </div>
-                        </div> )
+                           <div className="col-span-full flex justify-center items-center p-4">
+      <div className="w-full max-w-4xl rounded-2xl flex flex-col items-center justify-center p-8 bg-[#1F2225] border-[1.9px] border-[#4B4D4F]">
+        <div className="mb-4 text-[#B391F0]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B391F0] text-center mb-4 font-mona-sans">
+           Your Quiz Dashboard is Waiting!
+        </h2>
+        <p className="text-light-100 text-sm sm:text-base md:text-lg text-center max-w-2xl mb-6 font-mona-sans leading-relaxed">
+           Find a quiz that interests you and give it a try—just a few minutes and you’re in
+        </p>
+           <Link href="/quiz">
+           <button className="px-6 py-3 bg-[#9E4B9E] hover:bg-[#8A3A8A] rounded-full text-[#FAFAFA] font-semibold transition-colors duration-200 cursor-pointer">
+          Take Your First Quiz
+        </button>
+           </Link>
+        
+      </div>
+    </div> 
+                        )
                       }
                                                 </div>
                                                  </div>
@@ -441,31 +511,34 @@ import {
                                                         <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
                                                   {historyTutorIds?.length > 0 ? historyTutorIds.map((id) => {
                                                                             const history = historyTutorEntities[id]
+
+                                                                            const {_id, userId, tutorId} = history
+
                                                                              return (
-                                                                               <div className="bg-[#1F2225] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center selection:bg-[#B391F0] h-[18rem]" key={history?._id}>
+                                                                               <div className="bg-[#1F2225] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center selection:bg-[#B391F0] h-[18rem]" key={_id}>
                                                                        <div className="">
                                                                              <div className='flex gap-4 items-start'>
                                                                                                <div className='bg-black/10 w-16 h-16 rounded-full'>
-                                                                                                        <Image src={history.userId.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                                                                        <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                                                                   </div>
                                                                                                        <div className='flex flex-col leading-0 gap-2 mt-1'>
-                                                                                                         <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{history?.userId.username}</p>
+                                                                                                         <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>
                                                                                                         <p className='text-[0.8rem] font-semibold text-[#B391F0] font-sans'>pro</p>
                                                                                                        </div>
                                                                                                 </div>
                                                                                                    </div>
                                                                            <div className="flex flex-col">
-                                                                            <h2 className="text-[#FAFAFA] mt-3 text-xl font-semibold leading-8 text-light-100">Learn {history.tutorId.subject}<br/>  With {history.tutorId.name}</h2>
-                                                                             <p className="text-gray-300 text-lg leading-6 max-w-72">Topic: <span className="text-[#B391F0] text-[1rem] font semibold text-base leading-6 lowercase">{history.tutorId.topic}</span></p>
+                                                                            <h2 className="text-[#FAFAFA] mt-3 text-xl font-semibold leading-8 text-light-100">Learn {tutorId.subject}<br/>  With {tutorId.name}</h2>
+                                                                             <p className="text-light-100 text-lg leading-6 max-w-72">Topic: <span className="text-[#B391F0] text-[1rem] font semibold text-base leading-6 lowercase">{tutorId.topic}</span></p>
                                                                            </div>
                                                                            <div className="w-full flex justify-between mt-5 items-end">
-                                                                           <Link href={`/training/${history?.tutorId?._id}`}>
+                                                                           <Link href={`/training/${tutorId?._id}`}>
                                               <div className="w-30 h-10 flex items-center justify-center font-semibold rounded-full bg-[#9E4B9E] backdrop-blur-xl cursor-pointer">
                                                <p className="text-[#FAFAFA]">Start</p>
                                                                   </div>
                                                             </Link>
                                                                             <div className="w-20 h-8 flex items-center justify-center font-semibold rounded-full bg-[#696060]">
-                                                                                                             <p className="text-[#FAFAFA]">{history.tutorId.duration}min</p>
+                                                                                                             <p className="text-[#FAFAFA]">{tutorId.duration}min</p>
                                                                                                             </div>
                                                                            </div>
                                                                        </div> 
@@ -473,25 +546,38 @@ import {
                                                                             )
                                                                           }) : 
                                                                           (
-                          <div className="lg:w-[38rem] border-[1.9px] border-[#4B4D4F] w-full rounded-2xl flex gap-2 items-center p-4 flex justify-center bg-[#1F2225]">
-                              <div className="w-full h-52 rounded-2xl flex flex-col items-center justify-center">
-                                 <h2 className="text-3xl text-white font-semibold font-serif">Notification Not Found!</h2>
-                                   <p className="text-gray-300 max-w-md leading-6 text-center mb-5 font-serif ">No notification or reminder for you today seems you have a clean slate!</p>
-                                      <Image src='/assets/icons/search.png' width={50} height={50} alt="search/icon"/>
-                               </div>
-                        </div> )
+                           <div className="col-span-full flex justify-center items-center p-4">
+      <div className="w-full max-w-4xl rounded-2xl flex flex-col items-center justify-center p-8 bg-[#1F2225] border-[1.9px] border-[#4B4D4F]">
+        <div className="mb-4 text-[#B391F0]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B391F0] text-center mb-4 font-mona-sans">
+         Your Lesson Dashboard is Waiting!
+        </h2>
+        <p className="text-light-100 text-sm sm:text-base md:text-lg text-center max-w-2xl mb-6 font-mona-sans leading-relaxed">
+          Find the lessons that interests you and give it a try—just a few minutes and you’re in
+        </p>
+           <Link href="/training">
+           <button className="px-6 py-3 bg-[#9E4B9E] hover:bg-[#8A3A8A] rounded-full text-[#FAFAFA] font-semibold transition-colors duration-200 cursor-pointer">
+          Take Your First Lesson
+        </button>
+           </Link>
+        
+      </div>
+    </div>  
+                        )
                         }
                                               </div>
                                               </div>
                                               </div>
                                                )
-                                               
-                       
                       : (
                       <div className='min-h-[87.5vh]'>
                       <div className='flex flex-col gap-4 w-full h-full'>
                              <div className='  bg-black/10 w-32 h-32 rounded-full relative'>
-                                  <Image src={profilePics.cloudinaryUrl}  width={1000} height={200} alt="image" className='object-contain border-[1.9px] border-[#4B4D4F] rounded-full w-full h-full'/>
+                                  <Image src={profilePics?.cloudinaryUrl ? profilePics?.cloudinaryUrl : '/assets/images/empty.png'}  width={1000} height={200} alt="image" className='object-contain border-[1.9px] border-[#4B4D4F] rounded-full w-full h-full'/>
 
                               <div className='absolute bottom-2 -right-2 hover:bg-black/50 cursor-pointer h-10 w-10 p-2 rounded-full group'>
                               <span className="absolute bottom-8 mb-1 hidden group-hover:flex px-2 py-1 text-xs text-white bg-gray-700 rounded-md shadow-md z-30">edit</span>

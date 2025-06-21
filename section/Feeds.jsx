@@ -90,6 +90,9 @@ import Loader from '@/component/shared/Loader'
   return (     
        <> 
               <Header title="Feed" />
+
+              
+  
      <section className='flex w-[100%] items-center max-2xl:flex-col max-2xl:gap-2 py-5 sm:pt-4'>
 
        <form className='flex flex-grow bg-[#1F2225] h-20 items-center max-2xl:rounded-lg p-2 2xl:w-[50%] xl:rounded-l-xl sm:w-full w-full'>

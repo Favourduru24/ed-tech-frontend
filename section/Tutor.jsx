@@ -96,32 +96,35 @@ const Tutor = ({subject, duration, query, page, urlParamName}) => {
                            <div className='gap-5 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] py-10'>
                                {ids.map((id) => {
                                   const tutor = entities[id]
+
+                                   const {_id, userId, subject, name, topic, duration } = tutor
+
                                      return (
-                                   <div key={tutor._id}>
+                                   <div key={_id}>
 
                                     <div className='bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center break-all' >
                                        <div className='flex gap-3 items-start'>
                                              <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                      <Image src={tutor.userId.profilePics.cloudinaryUrl} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                      <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                 </div>
                                                      <div className='flex flex-col leading-0 gap-2 mt-1'>
-                                                       <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{tutor.userId.username}</p>
+                                                       <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>
                                                       <p className='text-[0.8rem] font-semibold text-[#B391F0] font-sans'>pro</p>
                                                      </div>
                                               </div>
                                                 <div className='flex flex-col pt-4 pb-2'>
-                                                 <p className='text-xl font-semibold leading-8 text-light-100'>Learn {tutor.subject} <br/>  With {tutor.name}  </p>
-                                                 <p className='text-gray-300 text-lg leading-6 max-w-72'>Topic: <span className='text-[#B391F0] text-[1rem] font semibold text-base leading-6 lowercase'>{tutor.topic}.</span></p>
+                                                 <p className='text-xl font-semibold leading-8 text-light-100'>Learn {subject} <br/>  With {name}  </p>
+                                                 <p className='text-lg font-semibold font-sans text-light-100'>Topic: <span className='text-[#B391F0] text-[1rem] font semibold text-base leading-6 lowercase'>{topic}.</span></p>
                                                 </div>
                                             <div className="flex items-center justify-between">
-                                                           <Link href={`/training/${tutor._id}`}>
+                                                           <Link href={`/training/${_id}`}>
                                                          <div className="w-30 h-10 flex items-center justify-center font-semibold rounded-full bg-[#9E4B9E] backdrop-blur-xl cursor-pointer">
                                                            <p className="text-[#FAFAFA]">Start</p>
                                                           </div>
                                                           </Link>
                                       
                                                          <div className="w-20 h-8 flex items-center justify-center font-semibold rounded-full bg-[#696060]  ">
-                                                           <p className="text-[#FAFAFA]">{tutor.duration}min</p>
+                                                           <p className="text-[#FAFAFA]">{duration}min</p>
                                                           </div>
                                                  </div>
                                       </div> 

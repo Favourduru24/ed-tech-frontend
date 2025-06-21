@@ -138,7 +138,7 @@ const CreateForm = () => {
                <div className="sm:w-[50%] w-full flex gap-2">
                     <SelectDropdown category={category} setCategory={setCategory}/>
                      <div className="h-15 bg-[#1F2225] w-[10%] border-[1.0px] border-[#4B4D4F] rounded-lg text-gray-500 flex items-center justify-center cursor-pointer" onClick={() => setOpen(true)}>
-                       <Image src='/asstes/icons/plus.png' width={24} height={24} alt="create"/>
+                       <Image src='/assets/icons/new.png' width={24} height={24} alt="create"/>
                      </div>
                </div>
             </div>

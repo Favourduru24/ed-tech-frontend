@@ -21,24 +21,3 @@ const usePersist = () => {
 }
 
 export default usePersist
-
-
-
-
-
-// const usePersist = () => {
-//    const [persist, setPersist] = useState(false)
-
-//    useEffect(() => {
-//        const stored = JSON.parse(localStorage.getItem("persist"))
-//        if (stored !== null) {
-//            setPersist(stored)
-//        }
-//    }, [])
-
-//    useEffect(() => {
-//        localStorage.setItem("persist", JSON.stringify(persist))
-//    }, [persist])
-
-//    return [persist, setPersist]
-// }

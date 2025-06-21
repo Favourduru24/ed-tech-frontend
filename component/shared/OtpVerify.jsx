@@ -3,6 +3,7 @@ import { useVerifyEmailMutation, useResendOtpMutation } from "@/features/user/us
 import { useRef, useState, useEffect } from "react"
 import useAuth from "@/hooks/useAuth"
 import {useRouter} from 'next/navigation'
+import Image from 'next/image'
 
 const OtpVerify = () => {
   const [verifyEmail, { isLoading, isSuccess, isError, error }] = useVerifyEmailMutation()
@@ -120,18 +121,16 @@ const OtpVerify = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-cente justify-center p-4">
-      
-
-      {/* OTP Verification Card */}
-      <div className="w-ful min-w-[30rem] bg-[#1A1C20] border-[#2E2E2E] rounded-xl overflow-hidden shadow-lg border-[2px]">
-        <div className="p-8">
-          {/* Logo and Title */}
-          <div className="flex flex-col items-center mb-8">
-            <h1 className="text-3xl font-bold text-light-100 mb-1">Ed-Tech</h1>
-            <p className="text-gray-400">Knowledge without boundaries</p>
+      <div className="sm:min-w-[30rem] max-w-[22rem] bg-[#1A1C20] border-[#4B4D4F] rounded-xl overflow-hidden shadow-lg border-[0.2px]">
+        <div className="sm:p-8 p-6">
+          <div className="flex flex-col items-center mb-8 justify-center w-full ">
+            <div className='w-full h-10 flex gap-2 items-end justify-center'>
+                       <Image src='/assets/images/ed-tech-logo3.png' alt='ed-tech-logo' width={200} height={200} className='object-cover brightness-100 size-12'/>
+                       <p className="font-semibold font-sans text-3xl text-light-100 ">Ed-Tech</p>
+                        </div>
+            <p className="text-light-100 font-semibold font-sans text-sm text-start">beyond the classroom</p>
           </div>
 
-          {/* Verification Heading */}
           <div className="mb-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-2">Verify Your Email</h2>
             <p className="text-gray-400">
@@ -139,14 +138,12 @@ const OtpVerify = () => {
             </p>
           </div>
 
-          {/* Error Message */}
           {otpError && (
             <div className="mb-4 p-3 bg-red-900/30 border border-red-700 rounded-lg text-red-300 text-sm">
               {otpError}
             </div>
           )}
 
-          {/* Success Message */}
           {isSuccess && (
             <div className="mb-4 p-3 bg-green-900/30 border border-green-700 rounded-lg text-green-300 text-sm">
               Email verified successfully! Redirecting...

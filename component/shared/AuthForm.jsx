@@ -5,14 +5,12 @@ import { useEffect, useState } from "react"
 import { useAddNewUserMutation } from "@/features/user/usersApiSlice"
 import { useRouter } from "next/navigation"
 import { useLoginMutation } from "@/features/auth/authApiSlice"
-import { useDispatch, useSelector } from "react-redux"
-import { selectCurrentToken, setCredentials } from "@/features/auth/authSlice"
+import { useDispatch } from "react-redux"
 import usePersist from "@/hooks/usePersist"
 // import useSocket from "@/features/socket/socket"
 
 
 const AuthForm = ({type}) => {
-
 
    const [loginUser, {
     isLoading: loginLoading,
@@ -32,7 +30,6 @@ const AuthForm = ({type}) => {
 
           const [errMsg, setErrMsg] = useState('')
           const [persist, setPersist] = usePersist()
-          const token = useSelector(selectCurrentToken)
 
         const [form, setForm] = useState({
             username: '',
@@ -46,12 +43,6 @@ const AuthForm = ({type}) => {
 
 
           const isSignIn = type === 'sign-in'
-         
-              useEffect(() => {
-                 if(token) {
-                    router.push('/verify-otp')
-                 }
-                }, [token, router])
          
              useEffect(() => {
                if(isSuccess || loginIsSuccess) {
@@ -122,8 +113,15 @@ const AuthForm = ({type}) => {
 
   return (
       <>
-      <div className="fixed inset-0 w-full h-16 sm:h-20 flex items-center justify-between px-5 bg-black/10 backdrop-blur-sm z-10">
-  <p className='text-light-100 text-3xl sm:text-4xl font-semibold font-sans tracking-tight'>Ed-Tech</p>
+      <div className="fixed inset-0 w-full h-16 sm:h-20 flex items-center justify-between px-5 bg-black/10 backdrop-blur-sm z-10 py-2">
+               <div className="flex flex-col mt-3">
+            <div className='w-full h-10 flex gap-2 items-end'>
+            <Image src='/assets/images/ed-tech-logo3.png' alt='ed-tech-logo' width={200} height={200} className='object-cover brightness-100 size-12'/>
+            <p className="font-semibold font-sans text-3xl text-light-100 ">Ed-Tech</p>
+             </div>
+             <p className="text-light-100 font-semibold font-sans text-xs text-cente">beyond the classroom</p>
+               </div>
+           
 </div>
 
 <form 

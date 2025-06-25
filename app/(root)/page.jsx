@@ -38,7 +38,6 @@ Chart.register(
   const {data: tutorStats, isLoading: isTutorStatLoading} = useGetTutorStatsQuery({userId: user})
   const {data: quizStats, isLoading: isQuizStatLoading} = useGetQuizStatsQuery({userId: user})
 
-  console.log({tutorStats})
 
   const options = {
     responsive: true,
@@ -50,11 +49,11 @@ Chart.register(
   }
 
   const BarChartData = {
-    labels: tutorStats ? tutorStats?.map(stat => stat.subject) : {},
+    labels: tutorStats ? tutorStats?.map(stat => stat?.subject) : {},
      datasets: [
        {
         label: "Your Tutor monthly progress",
-        data: tutorStats ? tutorStats?.map(stat => stat.count) : {},
+        data: tutorStats ? tutorStats?.map(stat => stat?.count) : {},
         borderColor: "#B391F0",
         backgroundColor: ["rbga(255, 99, 132, 0.2)"],
         borderWidth: 1
@@ -111,7 +110,6 @@ Chart.register(
         const {currentMonthQuizzes, lastMonthQuizzes, quizCount} = userQuizHistory?.quizsStats || {}
         const {currentMonthLessons, tutorCount, lastMonthLessons, currentDayLesson} = userTutorHistory?.tutorStats || {}
 
-         console.log({userTutorHistory})
          
         const stats = [
           {

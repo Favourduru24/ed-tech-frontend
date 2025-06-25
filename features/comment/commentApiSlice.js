@@ -44,7 +44,7 @@ export const commentApiSlice = apiSlice.injectEndpoints({
     try {
       const { data: createdComment } = await queryFulfilled;
       
-       console.log({createdComment})
+      //  console.log({createdComment})
       // Normalize the comment with the correct userId
       const normalizedComment = {
         ...createdComment,
@@ -105,7 +105,7 @@ export const commentApiSlice = apiSlice.injectEndpoints({
       return;
     }
 
-    console.log({currentUser})
+    // console.log({currentUser})
 
     const patchResult = dispatch(
       apiSlice.util.updateQueryData('getComment', undefined, (draft) => {

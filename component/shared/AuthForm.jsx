@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation"
 import { useLoginMutation } from "@/features/auth/authApiSlice"
 import { useDispatch } from "react-redux"
 import usePersist from "@/hooks/usePersist"
-// import useSocket from "@/features/socket/socket"
 
 
 const AuthForm = ({type}) => {
@@ -30,6 +29,7 @@ const AuthForm = ({type}) => {
 
           const [errMsg, setErrMsg] = useState('')
           const [persist, setPersist] = usePersist()
+          const [errLog, setErrLog] = useState('')
 
         const [form, setForm] = useState({
             username: '',
@@ -58,10 +58,16 @@ const AuthForm = ({type}) => {
             }, [isSuccess, router, loginIsSuccess])
 
              useEffect(() => {
-               if(errMsg) {
+               if(errMsg || errLog) {
                  setErrMsg('')
                } 
              },[form])
+
+             useEffect(() => {
+               if(isError) {
+                 setErrLog(error?.data?.message)
+               } 
+             },[isError, error])
         
 
         const handleSignUp = async (e) => {
@@ -109,8 +115,7 @@ const AuthForm = ({type}) => {
         }
 
 
-        
-
+      
   return (
       <>
       <div className="fixed inset-0 w-full h-16 sm:h-20 flex items-center justify-between px-5 bg-black/10 backdrop-blur-sm z-10 py-2">
@@ -180,7 +185,7 @@ const AuthForm = ({type}) => {
         </div>
       )}
       
-      {(loginIsError || isError) && (
+      {isSignIn && errMsg ? 
         <div className='bg-red-900/20 p-3 rounded-lg flex items-start gap-3 border border-red-800/50'>
           <Image 
             src="/assets/icons/error.png" 
@@ -194,7 +199,24 @@ const AuthForm = ({type}) => {
             {loginIsError ? errMsg : ''}
           </p>
         </div>
-      )}
+       : ''}
+
+      {!isSignIn && errLog  ? 
+        <div className='bg-red-900/20 p-3 rounded-lg flex items-start gap-3 border border-red-800/50'>
+          <Image 
+            src="/assets/icons/error.png" 
+            width={20} 
+            height={20} 
+            alt="error" 
+            className="mt-0.5 flex-shrink-0"
+          />
+          <p className='text-red-300 text-sm'>
+           {isError ? error?.data?.message : ''}
+           {errLog ? errLog : ''}
+          </p>
+        </div>
+       : ''}
+
     </div>
     
     <button 

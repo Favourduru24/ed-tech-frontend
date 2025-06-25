@@ -5,7 +5,6 @@ import Link from 'next/link'
 import useAuth from '@/hooks/useAuth'
 import {usePathname} from 'next/navigation'
 import {useEffect, useState} from 'react'
-import useSocket from '@/features/socket/socket'
 import { useRouter } from 'next/navigation'
 import { formatDate } from '../libs/utils'
 
@@ -14,11 +13,11 @@ import { formatDate } from '../libs/utils'
     
        const Feature = [
            {
-              icons: '/icons/edit.svg',
+              icons: '/assets/icons/edit.svg',
                name: 'edit' 
             },
               {
-              icons: '/icons/delete.svg',
+              icons: '/assets/icons/delete.svg',
                name: 'delete',
     
              }
@@ -56,30 +55,18 @@ import { formatDate } from '../libs/utils'
                    }
                }, [isSuccess])
 
-              const { socket, notifications } = useSocket({ userId, username });
 
                 const handleLike = async (e) => {
                       e.preventDefault();
                     try {
-                    const response = await likeFeed({ id, userId }).unwrap();
+                     const response = await likeFeed({ id, userId }).unwrap();
                       setLikeCount(response.likeCount);
      
-                      if(userId !== feed.userId._id ) {
-                          socket?.emit("sendNotification", {
-                          senderName: username,
-                          senderId: userId,
-                          receiverId: feed.userId._id,
-                          receiverName: feed.userId.username,  // Use the post owner's userId
-                          postId: id,
-                          type: 'like'
-                              });
-                               }
                              } catch (err) {
                                console.error('Failed to like:', err);
                              }
                           };
     
-                     console.log(notifications)
 
                      const handleOpen = () => {
                        setOpen((prev) => !prev)
@@ -106,8 +93,8 @@ import { formatDate } from '../libs/utils'
              <div className="w-full max-w-2xl bg-dark-200 border-[1.0px] border-[#4B4D4F] sm:rounded-xl rounded-md flex flex-col p-10 justify-center items-center h-[10rem] p-5">
                  <form  className='flex flex-col gap-4  max-w-[560px] h-full justify-center items-center'>
                       <div className='flex flex-col justify-center w-full items-center'>
-                          <p className='font-bold text-4xl font-light leading-12'>Are you sure you want to delete.</p>
-                          <p className='text-[#B391F0] text-xl'>This action can't be undone!</p>
+                          <p className='font-bold text-4xl font-light leading-12 text-[#B391F0]'>Are you sure you want to delete.</p>
+                          <p className='text-destructive-100 text-xl'>This action can't be undone!</p>
                       </div>
                     <div className='flex gap-3 items-center'>
                          <button className='text-sm text-white sm:text-[1rem] sm:w-20 h-8 w-16 sm:h-10 bg-destructive-100 font-semibold sm:rounded-lg rounded-sm cursor-pointer hover:bg-destructive-100/90 transition-colors' type='submit' onClick={handleDelete}>{delLoading ? 'loading...' : 'Delete'}</button>

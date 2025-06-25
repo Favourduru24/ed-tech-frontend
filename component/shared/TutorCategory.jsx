@@ -32,20 +32,36 @@ const TutorCategory = ({buttons}) => {
        label: 'Mathematics'
         },
       {
-       value: 'Economics',
-       label: "Economics"
+       value: 'Chemistry',
+       label: 'Chemistry'
         },
        {
        value: 'Physic',
-       label: "Physic"
+       label: 'Physic'
         },
        {
        value: 'Coding',
        label: 'Coding'
         },
        {
-       value: 'Chemistry',
-       label: 'Chemistry'
+       value: 'Biology',
+       label: 'Biology'
+        },
+       {
+       value: 'Economics',
+       label: 'Economics'
+        },
+        {
+       value: 'English',
+       label: 'English'
+        },
+        {
+       value: 'History',
+       label: 'History'
+        },
+        {
+       value: 'Art',
+       label: 'Art'
         }
      ]
 

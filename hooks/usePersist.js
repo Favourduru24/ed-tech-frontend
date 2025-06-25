@@ -6,14 +6,14 @@ const usePersist = () => {
 
   useEffect(() => {
    const stored = localStorage.getItem('persist')
-   console.log("Stored persist value from localStorage:", stored)
+  //  console.log("Stored persist value from localStorage:", stored)
    if (stored !== null) {
      setPersist(JSON.parse(stored))
    }
  }, [])
  
  useEffect(() => {
-   console.log("Persist value changed:", persist)
+  //  console.log("Persist value changed:", persist)
    localStorage.setItem('persist', JSON.stringify(persist))
  }, [persist])
 

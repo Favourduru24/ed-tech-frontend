@@ -24,9 +24,6 @@ const FeedDetail = ({id}) => {
 
     const [content, setContent] = useState('')
 
-      console.log({data})
-       
-
      const md = markdownIt()
 
      const parsedContent = md.render(feed?.pitch || '')

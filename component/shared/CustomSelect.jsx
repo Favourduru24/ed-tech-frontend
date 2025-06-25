@@ -53,7 +53,7 @@ const CustomSelect = ({
       {/* Dropdown Options */}
       {isOpen && (
         <div className={`${overflow ? '-top-0' : ''} absolute z-10 w-full mt-1 bg-black/70 border-[0.3px] border-[#4B4D4F] rounded-md shadow-lg`}>
-          <ul className="py-1 overflow-auto text-base max-h-60 focus:outline-none">
+          <ul className="py-1 overflow-auto text-base  focus:outline-none">
             {options.map((option) => (
               <li
                 key={option.id}

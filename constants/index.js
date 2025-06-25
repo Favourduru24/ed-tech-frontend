@@ -114,7 +114,7 @@ export const navLinks = [
        id: 1
         },
       {
-       value: 'Economics',
+       value: 'Chemistry',
        id: 2
         },
        {
@@ -126,9 +126,25 @@ export const navLinks = [
        id: 4
         },
        {
-       value: 'Chemistry',
+       value: 'Biology',
        id: 5
-        }
+        },
+       {
+       value: 'Economics',
+       id: 6
+        },
+        {
+       value: 'Biology',
+       id: 7
+        },
+        {
+       value: 'History',
+       id: 8
+        },
+        {
+       value: 'Art',
+       id: 9
+        },
      ]
 
     export const data5 = [

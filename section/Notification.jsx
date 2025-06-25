@@ -23,8 +23,6 @@ import { useState } from "react";
 
   const buttons = ["All", "Reminders", "Systems"];
 
-  console.log({data})
-
   const handleDeleteNotification = async (e) => {
       e.preventDefault()
 

@@ -16,12 +16,10 @@ import Loader from '@/component/shared/Loader'
     const [addHistory, {isSuccess}] = useAddNewHistoryMutation()
     const {id: user} = useAuth()
 
-     console.log({data})
 
     const quizId = data?.entities[id]
     const router = useRouter()
 
-    console.log({quizId})
 
      const {voice, subject, topic, voicePattern: style, name, duration, userId, questions} = quizId || {}
 

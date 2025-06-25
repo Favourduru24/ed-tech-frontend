@@ -25,7 +25,6 @@ const Quiz = ({level, subject, query, page, urlParamName}) => {
    page,
    limit: 9
  })
-   console.log({data})
    const {ids, entities} = data?.quizes || {}
     
 

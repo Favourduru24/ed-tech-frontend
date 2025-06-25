@@ -86,7 +86,6 @@ const CreateForm = () => {
         }
 
        await addFeed({title, pitch, image: imgUrl, description, category, userId: id})
-       console.log({title, pitch, image: imageUrl, description, category})
     }
 
     const handleCreateCategory = async (e) => {

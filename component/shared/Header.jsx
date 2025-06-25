@@ -1,8 +1,6 @@
  "use client"
-import useAuth from '@/hooks/useAuth'
 import Image from 'next/image'
 import Link from 'next/link'
-import useSocket from "@/features/socket/socket";
 import { usePathname } from 'next/navigation'
 import {
   Sheet,
@@ -16,17 +14,13 @@ import { navLinks } from '@/constants';
 
 const Header = ({title}) => {
 
-      //  const {username, id: userId} = useAuth()
-
-        // const { socket, notifications: header } = useSocket({ username, userId });
-      //  console.log({header})
+      
       const pathname = usePathname()
 
    return (
     <div className='sm:h-16 h-8 w-full flex items-center justify-between py-10 sm:py-10'>
          <div>
          <p className='text-light-100 text-2xl capitalize font-semibold whitespace-nowrap'>{title}</p>
-         {/* <p>{username}</p> */}
          </div>
 
           <div className='flex sm:gap-4 items-center gap-2 justify-between'>

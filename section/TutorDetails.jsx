@@ -15,7 +15,6 @@ const TutorDetail = ({id}) => {
     const {data, isLoading} = useGetTutorIdQuery(id)
     const [addHistory, {isSuccess}] = useAddNewHistoryMutation()
     const {id: user} = useAuth()
-     console.log({data})
     const tutorId = data?.entities[id]
     const router = useRouter()
 

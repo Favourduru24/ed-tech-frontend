@@ -85,8 +85,6 @@ import Loader from '@/component/shared/Loader'
              )
          }
 
-         console.log({data})
-
   return (     
        <> 
               <Header title="Feed" />

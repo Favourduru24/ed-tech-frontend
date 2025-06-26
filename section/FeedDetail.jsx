@@ -73,7 +73,7 @@ const FeedDetail = ({id}) => {
 
              <div className='flex gap-3 items-center mt-10'>
                                       <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                 <Image src={feed.userId.profilePics.cloudinaryUrl ? feed.userId.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                 <Image src={feed.userId.profilePics?.cloudinaryUrl ? feed.userId.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                </div>
                                                 <div className='flex flex-col leading-0 gap-3'>
                                                   <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{feed?.userId?.username}</p>

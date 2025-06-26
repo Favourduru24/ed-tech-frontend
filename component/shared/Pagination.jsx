@@ -23,14 +23,14 @@ const Pagination = ({page, totalPages, urlParamName}) => {
 
   return (
     <div className="flex gap-2">
-        <button size="lg" variant="outline" className="w-28" 
+        <button size="lg" variant="outline" className="w-28 bg-dark-200 border-[1.0px] border-[#4B4D4F] text-white h-10 rounded-sm" 
            onClick={() => onClick('prev')}
             disabled={Number(page) <= 1}
           >
               Prevous
           </button>
 
-          <button size="lg" variant="outline" className="w-28 bg-dark-200 border-[1.0px] border-[#4B4D4F]" 
+          <button size="lg" variant="outline" className="w-28 bg-dark-200 border-[1.0px] border-[#4B4D4F] text-white h-10 rounded-sm" 
            onClick={() => onClick('next')}
             disabled={Number(page) >= totalPages} 
           >

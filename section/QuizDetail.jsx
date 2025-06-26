@@ -91,12 +91,6 @@ import Loader from '@/component/shared/Loader'
            if(vapi) {
           setCallStatus(CallStatus.CONNECTING)
 
-          // let formattedQuestions = ''
-            
-          //   if(questions) {
-          //      formattedQuestions = questions.map((question) => `-${question}`).join('\n')
-          //   }
-
            let formattedQuestions = '';
       
            if (questions && questions.length > 0) {
@@ -164,7 +158,7 @@ import Loader from '@/component/shared/Loader'
              <div className='bg-[#1F2225] h-[36rem] w-[50%] rounded-xl flex items-center justify-center relative md:flex hidden'>
               <div className='bg-[#B391F0] rounded-full p-1'>
                <div className='rounded-full bg-dark-200 h-30 w-30 flex items-center justify-center relative'>
-                  <Image src={userId?.profilePics.cloudinaryUrl ? userId?.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={80} height={80} alt='ai-avatar' className='rounded-full object-contain'/>
+                  <Image src={userId?.profilePics?.cloudinaryUrl ? userId?.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={80} height={80} alt='ai-avatar' className='rounded-full object-contain'/>
                          <div className='flex items-center justify-center rounded-full cursor-pointer bg-[#B391F0] hover:rounded-full p-2 shrink-0 absolute -bottom-3 right-0'>
                             <Image src='/assets/icons/white-mic.png' width={20} height={20} alt='white-mic/image' className="size-6"/>
                         </div>

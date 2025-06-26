@@ -116,7 +116,7 @@ const CreateForm = () => {
             onClick={handleCreateCategory}
             type="submit"
           >
-            {catIsLoading ? <Loader styleName='w-5 w-5'/> : "Add"}
+            {catIsLoading ? <Loader styleName='w-5 w-5'/> : catIsSuccess ? 'Added' : "Add"}
           </button>
           <button
             className="w-20 h-10 bg-[#9E4B9E] font-semibold rounded-lg cursor-pointer text-white"
@@ -196,7 +196,7 @@ const CreateForm = () => {
                    </div>
                 }
               <button className="w-[100%] bg-[#9E4B9E] font-semibold h-15 text-white rounded-xl cursor-pointer sm:mt-0 mt-2" type='submit' default={isLoading}>
-                 {isLoading ? <Loader styleName='w-5 w-5' title='loading...'/> : 'Create Feed'}
+                 {isLoading ? <Loader styleName='w-5 w-5' title='loading...'/> : isSuccess ? 'Feed Created.' : 'Create Feed'}
                </button>
                 
           </form>

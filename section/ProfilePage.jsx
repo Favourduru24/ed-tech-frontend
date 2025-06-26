@@ -93,28 +93,22 @@ import {
               //feedCount
 
         const handleEditProfile = async (e) => {
-     e.preventDefault();
+         e.preventDefault();
   
-    if (!imageUrl || !user) {
-    return;
-     }
-
-  try {
-    const imgUrl = await upload(); 
+          if (!imageUrl || !user) {
+            return;
+            }
     
-    const result = await updateProfile({ 
-      profilePics: imgUrl,
-       userId: user
-    }).unwrap();  
+              const imgUrl = await upload(); 
 
-    
-     handleClose()
+           await updateProfile({ 
+            profilePics: imgUrl,
+             userId: user
+          })
 
-  } catch (error) {
-    console.error('Profile update failed:', error);
-  }
-}
-//isFeedLoading ||
+             handleClose()
+  
+            }
 
      if( isTutorLoading || isQuizLoading) {
        return (
@@ -140,7 +134,7 @@ import {
                                  </div>
            
                                <div className='flex gap-3 absolute right-4 bottom-5'>
-                                    <button className='w-32 h-12 bg-[#B391F0] font-semibold rounded-lg cursor-pointer text-white' onClick={handleEditProfile} default={updateProfileLoading}>{ updateProfileLoading ? <Loader styleName='w-4 w-4' title='updating...'/> : 'Edit Profile'}</button>
+                                    <button className='w-32 h-12 bg-[#B391F0] font-semibold rounded-lg cursor-pointer text-white' onClick={handleEditProfile} default={updateProfileLoading}>{updateProfileLoading ? <Loader styleName='w-4 w-4' title='updating...'/> : updateProfileSucces ? 'Profile Updated' : 'Update Profile'}</button>
                                     <button className='w-32 h-12 bg-destructive-100 font-semibold rounded-lg cursor-pointer text-white' onClick={handleClose}>Cancel</button>
                                </div>
                          </div> 
@@ -289,7 +283,7 @@ import {
                             <div className=' bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center relative' key={_id}>
                                            <div className='flex gap-3 items-start'>
                                              <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                      <Image src={userId?.profilePics.cloudinaryUrl ? userId?.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                      <Image src={userId?.profilePics?.cloudinaryUrl ? userId?.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                 </div>
                                                      <div className='flex flex-col leading-0 gap-2 mt-1'>
                                                        <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId?.username}</p>
@@ -387,7 +381,7 @@ import {
                                                <div className='bg-[#1F2225] h-[18rem] rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center' key={_id}>
                                                 <div className='flex gap-3 items-start'>
                                                  <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                   <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png' } width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/> 
+                                                   <Image src={userId.profilePics?.cloudinaryUrl ? userId.profilePics?.cloudinaryUrl : '/assets/images/empty.png' } width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/> 
                                                                      </div>
                                                    <div className='flex flex-col leading-0 gap-2 mt-1'>
                                                   <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>
@@ -454,7 +448,7 @@ import {
                                                <div className=' bg-[#1F2225]  rounded-xl border-[1.9px] border-[#4B4D4F] flex flex-col p-2 justify-center h-[18rem]' key={_id}>
                                                 <div className='flex gap-3 items-start'>
                                                  <div className='  bg-black/10 w-16 h-16 rounded-full'>
-                                                  <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                  <Image src={userId.profilePics?.cloudinaryUrl ? userId.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                                      </div>
                                                    <div className='flex flex-col leading-0 gap-2 mt-1'>
                                                   <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>
@@ -519,7 +513,7 @@ import {
                                                                        <div className="">
                                                                              <div className='flex gap-4 items-start'>
                                                                                                <div className='bg-black/10 w-16 h-16 rounded-full'>
-                                                                                                        <Image src={userId.profilePics.cloudinaryUrl ? userId.profilePics.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
+                                                                                                        <Image src={userId.profilePics?.cloudinaryUrl ? userId.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                                                                                                   </div>
                                                                                                        <div className='flex flex-col leading-0 gap-2 mt-1'>
                                                                                                          <p className='text-lg font-semibold text-[#FAFAFA] font-sans '>{userId.username}</p>

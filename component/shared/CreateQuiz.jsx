@@ -171,7 +171,7 @@ const CreateQuiz = ({type}) => {
                       
                </div> 
                <button className="w-[100%] bg-[#9E4B9E] font-semibold h-15 text-white rounded-xl cursor-pointer sm:mt-0 mt-2" type='submit' disabled={isLoading || isQuizLoading}>
-                  {isLoading || isQuizLoading ? <Loader styleName='w-6 w-6'/> : isSuccess ? 'Tutor Created.' : type === 'quiz' ? 'Create Quiz' : 'Create Tutor' } 
+                  {isLoading || isQuizLoading ? <Loader styleName='w-6 w-6'/> : isSuccess ? 'Tutor Created.' : isQuizSuccess ? 'Quiz Created.' : type === 'quiz' ? 'Create Quiz' : 'Create Tutor' } 
                </button>
             </form>
             </section>

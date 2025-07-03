@@ -63,11 +63,11 @@ Chart.register(
   }
 
   const LineChartData = {
-    labels: quizStats ? quizStats?.map(stat => stat.subject) : {},
+    labels: quizStats ? quizStats?.map(stat => stat?.subject) : {},
      datasets: [
        {
         label: "Your Quiz monthly progress",
-        data: quizStats ? quizStats?.map(stat => stat.count) : {},
+        data: quizStats ? quizStats?.map(stat => stat?.count) : {},
         borderColor: "#B391F0",
         backgroundColor: ["rbga(255, 99, 132, 0.2)"],
         borderWidth: 1

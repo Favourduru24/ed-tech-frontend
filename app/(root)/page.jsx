@@ -29,6 +29,7 @@ Chart.register(
  const Dashboard = () => {
   
    const {id: user, username} = useAuth()
+  
    
 
    const [date, setDate] = useState(
@@ -74,24 +75,6 @@ Chart.register(
     ],
   }
 
-  const [filter, setFilter] = useState('')
-
-    const statCard = {
-       totalTutor: 12450,
-       totalTutorLessonTaken: {
-       currentMonth: 40, lastMonth: 17
-      },
-       totalQuiz: 3210,
-       totalQuizTaken: {
-       currentMonth: 15, lastMonth: 20
-       },
-       totalQuizTakenToday: 200,
-       totalTutorLessonTakenToday: 200
-    }
-
-    const {totalTutor, totalTutorLessonTaken, totalTutorLessonTakenToday, totalQuiz, totalQuizTaken, totalQuizTakenToday} = statCard
-
-
     const {data: userTutorHistory, isLoading: isLoadingTutorHistory} = useGetTutorHistoryQuery(user)
     const {data: userQuizHistory, isLoading: isLoadingQuizHistory} = useGetQuizHistoryQuery(user)
 
@@ -111,131 +94,7 @@ Chart.register(
         const {currentMonthLessons, tutorCount, lastMonthLessons, currentDayLesson} = userTutorHistory?.tutorStats || {}
 
          
-        const stats = [
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           quizId: {
-            name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujb',
-            duration: 10
-           },
-          },
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           quizId: {
-            userId: {
-               username: 'Duru Pristine'
-            },
-             name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujb',
-            duration: 10
-           },
-          },
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           quizId: {
-            userId: {
-               username: 'Duru Pristine'
-            },
-             name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujbs',
-            duration: 10
-           },
-          },
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           quizId: {
-            userId: {
-               username: 'Duru Pristine'
-            },
-             name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujbw',
-            duration: 10
-           },
-          }
-         ]
-
-
-
-         const fakeStats = [
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           tutorId: {
-            name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujb',
-            duration: 10
-           },
-          },
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           tutorId: {
-            userId: {
-               username: 'Duru Pristine'
-            },
-             name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujb',
-            duration: 10
-           },
-          },
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           tutorId: {
-            userId: {
-               username: 'Duru Pristine'
-            },
-             name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujbs',
-            duration: 10
-           },
-          },
-          {
-            userId: {
-               username: 'Duru Pristine'
-            },
-           tutorId: {
-            userId: {
-               username: 'Duru Pristine'
-            },
-             name:'Andrian Ai',
-            topic: 'socket.io client',
-            subject: 'Mathematic',
-            _id: 'hhdshcvaawujbw',
-            duration: 10
-           },
-          }
-         ]
-
-
-
-
+         
   return (
     <section className="flex flex-col"> 
         <Header title="Dashboard"/>
@@ -258,7 +117,7 @@ Chart.register(
                <p className="text-[#FAFAFA] text-2xl font-medium leading-16  selection:bg-[#B391F0]">My Skills & Values</p>
                </div>
                    
-            <div className="gap-5 grid xl:gap-3 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            <div className="gap-5 grid xl:gap-3 sm:grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
                  <StatCard 
                    statTitle='Total Lesson taken'
                    total={tutorCount}
@@ -271,12 +130,15 @@ Chart.register(
                    currentMonthCount={currentMonthQuizzes}
                    lastMonthCount={lastMonthQuizzes}
                  />
-                 <StatCard 
-                   statTitle='Today Quiz taken'
-                   total={currentDayLesson}
-                   currentMonthCount={totalQuizTaken.currentMonth}
-                   lastMonthCount={totalQuizTaken.lastMonth}
-                 />
+                 <div className="bg-[#1F2225] h-40 border-[1.9px] border-[#4B4D4F] rounded-xl p-2 justify-cente gap-3 selection:bg-[#B391F0]">
+                                           <div className="flex flex-col gap-4 justify-center items-center">
+                                            <p className="font-semibold text-[1.5rem] font-sans text-white">Today Lesson taken</p>
+                                             <div className="flex flex-col items-center justify-between w-full">
+                                               <p className="text-3xl font-semibold text-light-100">{currentDayLesson}</p>       
+                                                  <p className="text-sm text-light-100 font-san">Today brief lesson stat</p>
+                                            </div>
+                                            </div>
+                </div>
              </div>
              </div>
 

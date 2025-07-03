@@ -166,12 +166,12 @@ const onSelectLevel = (level) => {
      
 
   return (
-     <div className="gap-2 flex h-full rounded-full  max-sm:flex-col w-full">
+     <div className="gap-2 flex h-full rounded-full max-sm:flex-col w-full ">
     {buttons.map((id) => (
       <div className="" onClick={() => setItems(id)} key={id}>
-      <div className="font-semibold text-light-100">{id === 'Category' ? 
+      <div className="font-semibold text-light-100 w-full">{id === 'Category' ? 
          (
-         <div className=""> 
+         <div className="w-full"> 
          <CustomSelect
                           options={[
                             { value: '', label: 'Select Subject' },
@@ -183,7 +183,7 @@ const onSelectLevel = (level) => {
                             onSelectSubject(value)
                           }}
                           placeholder="Select Subject"
-                          className="h-full bg-transparent min-w-[10rem]"
+                          className="h-full bg-transparent min-w-[12rem]"
                         />
          </div>
       ) : id === 'Level' && pathname === '/quiz' ? 
@@ -200,7 +200,7 @@ const onSelectLevel = (level) => {
                             onSelectLevel(value)
                           }}
                           placeholder="Select Level"
-                          className="h-full bg-transparent min-w-[10rem]"
+                          className="h-full bg-transparent w-full min-w-[12rem]"
                         />
         </div>
      ) :
@@ -218,7 +218,7 @@ const onSelectLevel = (level) => {
                             onSelectDuration(value)
                           }}
                           placeholder="Select Duration"
-                          className="h-full bg-transparent min-w-[10rem]"
+                          className="h-full bg-transparen min-w-[12rem] w-full"
                         />
         </div>
      ) : 

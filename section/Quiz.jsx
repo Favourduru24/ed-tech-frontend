@@ -69,7 +69,7 @@ const Quiz = ({level, subject, query, page, urlParamName}) => {
        <section className='flex w-full items-center max-2xl:flex-col max-2xl:gap-2 py-5 sm:pt-4'>
       <form className='flex flex-grow bg-[#1F2225] justify-between h-20 items-center max-2xl:rounded-lg p-2 w-full xl:rounded-l-xl'>
         <div className='flex gap-2 flex-grow sm:min-w-[200px] rounded-full p-2 items-center'>
-          <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer'/>
+          <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer whitespace-nowrap shrink-0'/>
           <input 
             type="text"  
             placeholder='Search or create a quiz...' 

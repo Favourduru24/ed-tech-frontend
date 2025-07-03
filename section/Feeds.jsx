@@ -95,7 +95,7 @@ import Loader from '@/component/shared/Loader'
 
        <form className='flex flex-grow bg-[#1F2225] h-20 items-center max-2xl:rounded-lg p-2 2xl:w-[50%] xl:rounded-l-xl sm:w-full w-full'>
        <div className='flex gap-2 flex-grow rounded-full p-2 items-center'>
-      <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer'/>
+      <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer whitespace-nowrap shrink-0'/>
       <input 
         type="text"  
         placeholder='Search or create a post...' 
@@ -110,7 +110,7 @@ import Loader from '@/component/shared/Loader'
       <Category buttons={buttons}/>
       </div>
       <Link href="/feeds/create">
-      <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold h-11 m-2 ">
+      <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold sm:h-11 m-2 h-10">
        <Image src="/assets/icons/new.png" width={24} height={24} alt='create'/>
         <p>Create Feed</p>
       </button>

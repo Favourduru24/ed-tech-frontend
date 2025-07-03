@@ -67,7 +67,7 @@ const Tutor = ({subject, duration, query, page, urlParamName}) => {
 
       <form className='flex flex-grow bg-[#1F2225] justify-between h-20 items-center max-2xl:rounded-lg p-2 xl:rounded-l-xl 2xl:w-[50%] sm:w-full w-full '>
         <div className='flex gap-2 flex-grow sm:min-w-[250px] rounded-full p-2 items-center'>
-          <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer'/>
+          <Image src='/assets/icons/search.png' width={28} height={28} alt='search' className='object-cover cursor-pointer whitespace-nowrap shrink-0'/>
           <input 
             type="text"  
             placeholder='Search or create a companions...' 
@@ -76,14 +76,14 @@ const Tutor = ({subject, duration, query, page, urlParamName}) => {
           /> 
         </div>
       </form>
-      <div className='sm:flex justify-between items-center sm:h-20 h-full p-4 max-2xl:rounded-lg bg-[#1F2225] 2xl:w-[50%] sm:w-full w-full rounded-r-xl'>
-        <div className='bg-dark p-2 rounded-full'>
+      <div className='sm:flex justify-between items-center sm:h-20 h-full p-4 max-2xl:rounded-lg bg-[#1F2225] 2xl:w-[50%] w-full rounded-r-xl'>
+        <div className='bg-dark p-2 rounded-full w-full justify-center flex flex-col items-center'>
           <TutorCategory buttons={buttons}/>
         </div>
         <Link href="/training/create">
-          <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold h-11 m-2">
+          <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold sm:h-11 h-10 m-2">
              <Image src="/assets/icons/new.png" width={24} height={24} alt='create'/>
-                    <p>Create Tutor</p>
+                    <p clasName="">Create Tutor</p>
           </button>
         </Link>
       </div>

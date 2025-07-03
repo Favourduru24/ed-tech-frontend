@@ -95,7 +95,7 @@ const Quiz = ({level, subject, query, page, urlParamName}) => {
                        
                    {ids?.length > 0 ?
                     <div className="flex flex-col items-center gap-5 grid">
-                      <div className='gap-5 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] py-10'>
+                      <div className='gap-5 grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] py-10 grid-cols-[repeat(auto-fill,minmax(280px,1fr))]'>
                         {ids.map((id) => {
                           const quiz = entities[id]
 

@@ -92,7 +92,7 @@ const Tutor = ({subject, duration, query, page, urlParamName}) => {
        <section className='py-5 sm:pt-3'>
                       {ids?.length > 0 ?  
                        <div className="flex flex-col items-center gap-5 grid"> 
-                           <div className='gap-5 grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] py-10 '>
+                           <div className='gap-5 grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] sm:py-10 py-5'>
                                {ids.map((id) => {
                                   const tutor = entities[id]
 

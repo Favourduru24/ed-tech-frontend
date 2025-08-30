@@ -16,7 +16,7 @@ const Session = ({children}) => {
            {children}
           </Prefetch>
          </PersistLogin>
-        </PersistGate>
+         </PersistGate>
          </ProtectRoute>
     </Provider>
   )

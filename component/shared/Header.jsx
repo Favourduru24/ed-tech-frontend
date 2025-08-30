@@ -49,7 +49,10 @@ const Header = ({title}) => {
      <Image src='/assets/icons/menu.png' width={32} height={32} alt='menu' className='cursor-pointer shrink-0 whitespace-nowrap sm:size-6 max-sm:size-5'/>
   </SheetTrigger>
   <SheetContent className="focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none sm:w-64 bg-[#1F2225] w-72">
-     <h3 className='text-light-100 py-1 pl-2 font-semibold text-2xl'>Ed- Tech</h3>
+     <div className='w-full h-10 flex gap-2 items-end'>
+        <Image src='/assets/images/ed-tech-logo3.png' alt='ed-tech-logo' width={200} height={200} className='object-cover brightness-100 size-10'/>
+         <p className="font-semibold font-sans text-3xl text-light-100 ">Ed-Tech</p>
+           </div>
       <nav className='flex h-full flex-col justify-between md:flex md:gap-4 bg-[#1F2225] p-2 rounded-md'>
 
               <ul className='w-full flex-col items-start gap-2 md:flex'>

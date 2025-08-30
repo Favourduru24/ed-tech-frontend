@@ -138,7 +138,7 @@ import { formatDate } from '../libs/utils'
                  <div className='rounded-2xl relative bg-dark-200 border-[1.0px] border-[#4B4D4F] flex flex-col p-4' >
                  <div className='flex sm:justify-between items-center mb-2 gap-3 justify-between max-sm:justify-envenly'>
                      <div className='flex sm:gap-2 items-center gap-1 '>
-                       <div className='  bg-black/10 sm:w-16 sm:h-16 w-10 h-10 shrink-0 whitespace-nowrap rounded-full'>
+                       <div className='bg-black/10 sm:w-16 sm:h-16 w-10 h-10 shrink-0 whitespace-nowrap rounded-full'>
                   <Image src={feed?.userId?.profilePics?.cloudinaryUrl ? feed?.userId?.profilePics?.cloudinaryUrl : '/assets/images/empty.png'} width={50} height={50} alt='user/image' className='h-full w-full object-cover rounded-full'/>
                           </div>
                      <p className='text-lg text-white font-semibold sm:text-[1rem] text-sm whitespace-nowrap'>{feed.userId.username}</p>

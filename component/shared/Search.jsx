@@ -9,6 +9,7 @@ const Search = () => {
       const [notification , setNotification] = useState()
 
        const searchParams = useSearchParams()
+       
 
        const router = useRouter()
 

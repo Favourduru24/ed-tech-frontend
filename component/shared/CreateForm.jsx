@@ -15,8 +15,7 @@ const CreateForm = () => {
 
    const [addFeed, {
     isLoading, 
-    isSuccess,
-     isError}] = useAddNewFeedMutation()
+    isSuccess}] = useAddNewFeedMutation()
 
   const [
     addCategory, 

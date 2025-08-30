@@ -69,13 +69,6 @@ const initialState = historyAdapter.getInitialState()
          transformResponse: (responseData) => {
     // Return the data array directly (simplest approach)
           return responseData.data || [];
-    
-    /* Alternative if you need normalized data:
-    return responseData.data.reduce((acc, stat) => {
-      acc[stat.subject] = stat; // Using subject as unique key
-      return acc;
-    }, {});
-    */
   },
   providesTags: (result, error, arg) => 
     result

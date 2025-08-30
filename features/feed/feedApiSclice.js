@@ -33,7 +33,7 @@ export const feedsApiSlice = apiSlice.injectEndpoints({
           
           transformResponse: responseData => {
             // Transform the data before normalization
-            const loadedFeeds = responseData.feeds.map(feed => ({ // Changed from responseData.feed to responseData.feeds
+            const loadedFeeds = responseData.data.map(feed => ({  
               ...feed,
               id: feed._id // Convert _id to id
             }));
@@ -61,8 +61,8 @@ export const feedsApiSlice = apiSlice.injectEndpoints({
             transformResponse: responseData => {
                 // Single feed response doesn't need .feed property
                 return feedsAdapter.setOne(initialState, {
-                  ...responseData.feedId,
-                  id: responseData.feedId._id
+                  ...responseData.data,
+                  id: responseData.data._id
                 });
               },
              providesTags: (result, error, arg) => {
@@ -103,7 +103,7 @@ export const feedsApiSlice = apiSlice.injectEndpoints({
                     return response.status === 200 && !result.isError
              },
              transformResponse: responseData => {
-                const loadedFeeds = responseData.userFeed.map(feed => {
+                const loadedFeeds = responseData.data.map(feed => {
                     feed.id = feed._id
                       return feed 
                 })

@@ -22,19 +22,14 @@ Chart.register(
  LineElement,
  PointElement,
  Title,
-  Tooltip, 
-  Legend 
+ Tooltip, 
+ Legend 
 )
 
  const Dashboard = () => {
   
    const {id: user, username} = useAuth()
-  
-   
-
-   const [date, setDate] = useState(
-     new Date()
-   )
+   const [date, setDate] = useState(new Date())
 
   const {data: tutorStats, isLoading: isTutorStatLoading} = useGetTutorStatsQuery({userId: user})
   const {data: quizStats, isLoading: isQuizStatLoading} = useGetQuizStatsQuery({userId: user})

@@ -25,7 +25,7 @@ export const quizApiSlice = apiSlice.injectEndpoints({
               return response.status === 200 && !result.isError;
             },
             transformResponse: (responseData) => {
-              const loadedQuiz = responseData.quiz.map(quiz => ({
+              const loadedQuiz = responseData.data.map(quiz => ({
                 ...quiz,
                 id: quiz._id
               }));
@@ -54,8 +54,8 @@ export const quizApiSlice = apiSlice.injectEndpoints({
                       transformResponse: responseData => {
                           // Single feed response doesn't need .feed property
                           return quizAdapter.setOne(initialState, {
-                            ...responseData.quizId,
-                            id: responseData.quizId._id
+                            ...responseData.data,
+                            id: responseData.data._id
                           });
                         },
                        providesTags: (result, error, arg) => {
@@ -86,7 +86,7 @@ export const quizApiSlice = apiSlice.injectEndpoints({
                                       return response.status === 200 && !result.isError
                                },
                                transformResponse: responseData => {
-                                  const loadedQuizs = responseData.userQuiz.map(quiz => {
+                                  const loadedQuizs = responseData.data.map(quiz => {
                                       quiz.id = quiz._id
                                         return quiz 
                                   })

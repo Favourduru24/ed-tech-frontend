@@ -79,11 +79,11 @@ const Quiz = ({level, subject, query, page, urlParamName}) => {
         </div>
       </form>
       <div className='sm:flex justify-between items-center sm:h-20 p-4 max-2xl:rounded-lg bg-[#1F2225] w-full rounded-r-xl'>
-        <div className='bg-dark p-2 rounded-full'>
+        <div className='bg-dark rounded-full'>
           <TutorCategory buttons={buttons}/>
         </div>
         <Link href="/quiz/create">
-          <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold h-11 m-2">
+          <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold h-11">
                        <Image src="/assets/icons/new.png" width={24} height={24} alt='create'/>
                               <p>Create Quiz</p>
                     </button>

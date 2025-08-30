@@ -13,7 +13,7 @@ import {createEntityAdapter, createSelector} from '@reduxjs/toolkit'
             },
            //  keepUnusedDataFor:5,
            transformResponse: responseData => {
-               const usersArray = responseData.users || []
+               const usersArray = responseData.data || []
             const loadedUsers = usersArray.map(user => {
               user.id = user._id
               return user

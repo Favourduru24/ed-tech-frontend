@@ -25,7 +25,7 @@ export const tutorApiSlice = apiSlice.injectEndpoints({
               return response.status === 200 && !result.isError;
             },
             transformResponse: (responseData) => {
-              const loadedTutor = responseData.tutor.map(tutor => ({
+              const loadedTutor = responseData.data.map(tutor => ({
                 ...tutor,
                 id: tutor._id
               }));
@@ -49,15 +49,9 @@ export const tutorApiSlice = apiSlice.injectEndpoints({
          getTutorStats: builder.query({
          query: () => '/history/get-user-tutor-stat',
          transformResponse: (responseData) => {
-    // Return the data array directly (simplest approach)
           return responseData.data || [];
     
-    /* Alternative if you need normalized data:
-    return responseData.data.reduce((acc, stat) => {
-      acc[stat.subject] = stat; // Using subject as unique key
-      return acc;
-    }, {});
-    */
+     
   },
   providesTags: (result, error, arg) => 
     result
@@ -96,7 +90,7 @@ export const tutorApiSlice = apiSlice.injectEndpoints({
                                       return response.status === 200 && !result.isError
                                },
                                transformResponse: responseData => {
-                                  const loadedTutors = responseData.userTutor.map(tutor => {
+                                  const loadedTutors = responseData.data.map(tutor => {
                                       tutor.id = tutor._id
                                         return tutor 
                                   })
@@ -123,17 +117,8 @@ export const tutorApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: [
                 {type:'Tutor', id: 'List'}
             ]
-          }),
-        //    deleteTutor: builder.mutation({
-        //     query: ({id}) => ({
-        //         url: '/Tutor',
-        //         method: 'DELETE',
-        //         body: {
-        //             id
-        //         }
-        //     }),
-        //     invalidatesTags: (result, error, arg) => [{type: 'Tutor', id:arg.id}]
-        //   }),
+          })
+        
         }),
         overrideExisting: true
 

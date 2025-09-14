@@ -14,7 +14,7 @@ const TutorDetail = ({id}) => {
 
     const {data, isLoading} = useGetTutorIdQuery(id)
     const [addHistory, {isSuccess}] = useAddNewHistoryMutation()
-    // const {id: user} = useAuth()
+    const {id: user} = useAuth()
     const user = '12'
     const profilePics = ""
     

@@ -539,7 +539,7 @@ const TutorDetail = ({ id }) => {
                 callStatus === CallStatus.CONNECTING && 'animate-pulse'
               )} 
               onClick={callStatus === CallStatus.ACTIVE ? handleDisconnect : handleCall}
-              disabled={callStatus === CallStatus.CONNECTING || !microphoneAccess}
+              // disabled={callStatus === CallStatus.CONNECTING || !microphoneAccess}
             >
               <Image 
                 src={callStatus === CallStatus.ACTIVE ? '/assets/icons/end.png' : '/assets/icons/call.png'} 

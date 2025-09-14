@@ -11,7 +11,7 @@ const voiceId = voices[voice?.toLowerCase()]?.[style?.toLowerCase()] || "sarah";
   const vapiAssistant = {
     name: "Companion",
     firstMessage:
-        "Welcome to your ${subject} assessment. Topic: ${topic}. Answer clearly, and let’s begin.",
+        `Welcome to your ${subject} assessment. Topic: ${topic}. Answer clearly, and let’s begin.`,
     transcriber: {
       provider: "deepgram",
       model: "nova-3",
@@ -77,7 +77,7 @@ const voiceId = voices[voice?.toLowerCase()]?.[style?.toLowerCase()] || "sarah";
   const vapiAssistant = {
     name: "Companion",
     firstMessage:
-        "Hello, let's start the session. Today we'll be talking about ${topic}.",
+        `Hello, let's start the session. Today we'll be talking about ${topic}.`,
     transcriber: {
       provider: "deepgram",
       model: "nova-3",

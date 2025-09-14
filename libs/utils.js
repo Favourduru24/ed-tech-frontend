@@ -11,7 +11,7 @@ const voiceId = voices[voice?.toLowerCase()]?.[style?.toLowerCase()] || "sarah";
   const vapiAssistant = {
     name: "Companion",
     firstMessage:
-        `Welcome to your ${subject} assessment. Topic: ${topic}. Answer clearly, and let’s begin.`,
+        `Welcome to your {{ subject }} assessment. Topic: {{ topic }}. Answer clearly, and let’s begin.`,
     transcriber: {
       provider: "deepgram",
       model: "nova-3",
@@ -40,14 +40,14 @@ const voiceId = voices[voice?.toLowerCase()]?.[style?.toLowerCase()] || "sarah";
   {{ questions }}  
 
 **Engagement Rules:**  
-✅ **Ask one question at a time** – Wait for the student’s response before moving to the next.  
-✅ **Provide immediate feedback** –  
+ **Ask one question at a time** – Wait for the student’s response before moving to the next.  
+  **Provide immediate feedback** –  
    - If correct: *"Great job! That’s correct. [Brief explanation if needed]."*  
    - If incorrect: *"Close! The correct answer is [X]. [Brief explanation]."*  
-✅ **Encourage the student** –  
+  **Encourage the student** –  
    - *"Take your time!"*  
    - *"You're doing great!"*  
-✅ **Keep it natural** –  
+  **Keep it natural** –  
    - Avoid robotic phrasing.  
    - Use a conversational but clear tone.  
 
@@ -77,7 +77,7 @@ const voiceId = voices[voice?.toLowerCase()]?.[style?.toLowerCase()] || "sarah";
   const vapiAssistant = {
     name: "Companion",
     firstMessage:
-        `Hello, let's start the session. Today we'll be talking about ${topic}.`,
+        `Hello, let's start the session. Today we'll be talking about {{ topic }}.`,
     transcriber: {
       provider: "deepgram",
       model: "nova-3",

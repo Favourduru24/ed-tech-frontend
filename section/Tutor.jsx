@@ -84,7 +84,7 @@ const Tutor = ({subject, duration, query, page, urlParamName}) => {
         <Link href="/training/create">
           <button className="text-white bg-[#B391F0] sm:w-36 w-full flex items-center justify-center p-2 rounded-full cursor-pointer font-semibold sm:h-11 my-2 h-10">
              <Image src="/assets/icons/new.png" width={24} height={24} alt='create'/>
-                    <p clasName="">Create Tutor</p>
+            Create Tutor
           </button>
         </Link>
       </div>

@@ -2,7 +2,7 @@ import { setCredentials } from "@/features/auth/authSlice";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-     baseUrl: 'https://ed-tech-backend-62u0dp1h6-starks-projects-f3f5ee78.vercel.app/',
+     baseUrl: 'https://ed-tech-backend-legli1aml-starks-projects-f3f5ee78.vercel.app/',
      credentials: 'include',
      prepareHeaders: (headers, {getState}) => {
        const token = getState().auth.token

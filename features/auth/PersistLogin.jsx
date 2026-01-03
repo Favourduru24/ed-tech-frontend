@@ -44,14 +44,13 @@ const PersistLogin = ({ children }) => {
     if (!persist) {
         content = children;
     } else if (isLoading) {
-        content = <div className="fixed inset-0 z-50 flex justify-center items-cente bg-black">
+        content = <div className="fixed inset-0 z-50 flex justify-center  bg-black">
                     <Loader styleName='w-14 h-14'/>
                  </div>
     } else if (isError) {
         content = (
             <div className='fixed inset-0 z-50 flex justify-center items-center bg-black text-white'>
-                {`${error?.data?.message}`}
-                <Link href="/sign-in" className="text-[#B391F0]">{' '}Please login again</Link>.
+              <Link href="/sign-in" className="text-[#B391F0]">  <p className="undefined text-destructive-200">{`${error?.data?.message}`} <span className='underline text-purple-800'>Please login again</span></p></Link>
             </div>
         );
     } else if (isSuccess || (token && isUninitialized)) {

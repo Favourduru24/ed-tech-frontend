@@ -53,7 +53,7 @@ const AuthForm = ({type}) => {
                   confirmPassword:""
                  })
 
-                 router.push(`${isSignIn ? '/verify-otp' : 'sign-in'}`)
+                 router.push(`${isSignIn ? '/' : 'sign-in'}`)
                }
             }, [isSuccess, router, loginIsSuccess])
 

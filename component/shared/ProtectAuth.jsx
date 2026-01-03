@@ -11,7 +11,7 @@ const ProtectAuth = ({children}) => {
 
    useEffect(() => {
     if(token) {
-       router.push('/verify-otp')
+       router.push('/sign-in')
     }
    }, [token, router])
 

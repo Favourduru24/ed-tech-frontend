@@ -1,8 +1,9 @@
 import { setCredentials } from "@/features/auth/authSlice";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+     //https://ed-tech-backend-gt4n.onrender.com/
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"; 
 
 const baseQuery = fetchBaseQuery({
-     baseUrl: 'https://ed-tech-backend-gt4n.onrender.com/',
+     baseUrl: 'http://localhost:4000',  
      credentials: 'include',
      prepareHeaders: (headers, {getState}) => {
        const token = getState().auth.token

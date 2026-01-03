@@ -14,6 +14,7 @@ import Header from '@/component/shared/Header'
 import { sideLinks } from '@/constants'
 import { useState, useRef, useEffect} from 'react'
 import { imageCofig } from '@/app/api/axios'
+import { persistor } from "@/app/store";
 import Loader from '@/component/shared/Loader'
 import {
   Sheet,
@@ -23,9 +24,10 @@ import {
 } from "@/components/ui/sheet"
 
      const ProfilePage = () => {
-        const {id: user, username, email, profilePics} = useAuth()
+        const {id: user, username, email, profilePics} = useAuth() || {}
 
         const [imageUrl, setImageUrl] = useState(null)
+
 
         const [items, setItems] = useState(sideLinks[0]) 
         const {data, isLoading: isFeedLoading} = useGetUserFeedQuery(user) 
@@ -39,7 +41,11 @@ import {
             }] = useSendLogoutMutation()
 
 
-        const onLogout = () => sendLogout()
+        const onLogout = async () => {
+          sendLogout()
+           await persistor.purge();
+          router.push("/sign-in");
+        }
         
         const {ids, entities} = data || {}
         const feedCount = ids?.length

@@ -1,29 +1,22 @@
-"use client"
-import { useRouter } from "next/navigation"
-import { selectCurrentToken } from "@/features/auth/authSlice"
-import { useSelector } from 'react-redux'
-import { useEffect, useState } from "react"
-import Loader from '@/component/shared/Loader'
+ 
+"use client";
 
-const ProtectRoute = ({children}) => {
-    const token = useSelector(selectCurrentToken)
-    const router = useRouter()
-    const [isChecking, setIsChecking] = useState(true)
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { selectCurrentToken } from "@/features/auth/authSlice";
 
-    useEffect(() => {
-        if (!token) {
-            router.push('/sign-in')
-        }
-        setIsChecking(false)
-    }, [token, router])
+const ProtectRoute = ({ children }) => {
+  const token = useSelector(selectCurrentToken);
+  const router = useRouter();
 
-    if (isChecking) {
-        return <div className="fixed inset-0 z-50 flex justify-center items-cente bg-black">
-                    <Loader styleName='w-14 h-14'/>
-                 </div>
+  useEffect(() => {
+    if (!token) {
+      router.push("/sign-in");
     }
-     
-    return <>{children}</>
-}
+  }, [token, router]);
 
-export default ProtectRoute
+  return <>{children}</>;
+};
+
+export default ProtectRoute;
